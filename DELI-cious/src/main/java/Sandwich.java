@@ -61,12 +61,15 @@ public class Sandwich implements Menu{
 
     @Override
     public double getPrice() {
-        if (getSize() == 4){
+        if (getSize() == 4) {
             return priceOf4;
         } else if (getSize() == 8) {
             return getPrice();
-        } else {
+        } else if (getSize() == 12) {
             return priceOf12;
         }
+
+        return 0;
+
     }
 }
