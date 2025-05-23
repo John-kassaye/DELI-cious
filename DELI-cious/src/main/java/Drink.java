@@ -23,11 +23,15 @@ public class Drink implements Menu {
 
     @Override
     public String getName() {
-        return "";
+        return getSize() +"\" " + getFlavor();
     }
 
     @Override
     public double getPrice() {
-        return 0;
+        return switch (getSize()) {
+            case 4 -> 2.00;
+            case 8 -> 2.50;
+            default -> 3.00;
+        };
     }
 }
