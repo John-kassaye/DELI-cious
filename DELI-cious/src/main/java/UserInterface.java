@@ -4,13 +4,11 @@ public class UserInterface {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 //        homeScreen();
-        Sandwich sandwich = new Sandwich(8,"White",false);
-        PremiumTopping premiumTopping = new PremiumTopping("Steak",true,8);
-        System.out.println(premiumTopping.isMeat());
-        System.out.println(premiumTopping.isCheese());
-        System.out.println(premiumTopping.getName());
-        System.out.println(premiumTopping.getPrice());
 
+        Menu menu = new Sandwich(4,"White",true);
+        Menu menu1 = new Drink(4,"Lemonade");
+
+        System.out.println(menu.getPrice());
     }
 
     public static void homeScreen(){
