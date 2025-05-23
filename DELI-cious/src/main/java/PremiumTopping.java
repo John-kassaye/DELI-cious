@@ -23,6 +23,18 @@ public class PremiumTopping extends Topping{
         return isMeat;
     }
 
+    public boolean isCheese(){
+        boolean isCheese = false;
+        if (getName().equalsIgnoreCase("American") ||
+                getName().equalsIgnoreCase("Provolone") ||
+                getName().equalsIgnoreCase("Cheddar") ||
+                getName().equalsIgnoreCase("Swiss")){
+            isCheese = true;
+        }
+
+        return isCheese;
+    }
+
     @Override
         public double getPrice () {
         return 0;
