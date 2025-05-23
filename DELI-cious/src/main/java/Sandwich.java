@@ -1,13 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
 
-public class Sandwich {
+public class Sandwich implements Menu{
     private int size;
     private String typeOfBread;
-    private Topping toppings;
+    private List<Topping> toppings = new ArrayList<>();
+    private boolean isToasted;
 
-    public Sandwich(int size, String typeOfBread, Topping topping) {
+    public Sandwich(int size, String typeOfBread, List<Topping> topping, boolean isToasted) {
         this.size = size;
         this.typeOfBread = typeOfBread;
         this.toppings = topping;
+        this.isToasted = isToasted;
     }
 
     public int getSize() {
@@ -32,13 +36,23 @@ public class Sandwich {
         };
     }
 
-    public Topping getToppings() {
-        return toppings;
+    public void addToppings(Topping topping) {
+        toppings.add(topping);
     }
 
     @Override
     public String toString() {
         return "  size:  " + getSize() + '\'' +
                 " typeOfBread:  " + getTypeOfBread();
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
     }
 }

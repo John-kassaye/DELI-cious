@@ -1,4 +1,4 @@
-public class Drink {
+public class Drink implements Menu {
     private int size;
     private String flavor;
 
@@ -19,5 +19,15 @@ public class Drink {
     public String toString() {
         return " size: " + size + '\'' +
                 " flavor: " + flavor;
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public double getPrice() {
+        return 0;
     }
 }
