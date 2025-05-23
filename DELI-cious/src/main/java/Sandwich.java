@@ -7,6 +7,10 @@ public class Sandwich implements Menu{
     private List<Topping> toppings = new ArrayList<>();
     private boolean isToasted;
 
+    private static final double priceOf4 = 5.50;
+    private static final double priceOf8 = 7.00;
+    private static final double priceOf12 = 8.50;
+
     public Sandwich(int size, String typeOfBread, List<Topping> topping, boolean isToasted) {
         this.size = size;
         this.typeOfBread = typeOfBread;
@@ -57,6 +61,12 @@ public class Sandwich implements Menu{
 
     @Override
     public double getPrice() {
-        return 0;
+        if (getSize() == 4){
+            return priceOf4;
+        } else if (getSize() == 8) {
+            return getPrice();
+        } else {
+            return priceOf12;
+        }
     }
 }
