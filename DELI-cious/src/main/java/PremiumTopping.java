@@ -1,49 +1,30 @@
 public class PremiumTopping extends Topping{
+    private int sandwichSize;
 
-
-    public PremiumTopping(String name, boolean isExtra) {
+    public PremiumTopping(String name, boolean isExtra, int sandwichSize) {
         super(name, isExtra);
+        this.sandwichSize = sandwichSize;
     }
 
-    public double price1(){
-        double price = 0;
-        if (getName().trim().equalsIgnoreCase("American") || getName().trim().equalsIgnoreCase("Provolone")
-                || getName().trim().equalsIgnoreCase("Cheddar") || getName().trim().equalsIgnoreCase("swiss")){
-            price = 0.75;
-        } else {
-            price = 1.00;
+    public int getSandwichSize() {
+        return sandwichSize;
+    }
+
+    public boolean isMeat(){
+        boolean isMeat = false;
+        if( getName().equalsIgnoreCase("Steak") ||
+                getName().equalsIgnoreCase("Ham") ||
+                getName().equalsIgnoreCase("Salami") ||
+                getName().equalsIgnoreCase("Roast Beef") ||
+                getName().equalsIgnoreCase("Chicken") ||
+                getName().equalsIgnoreCase("Bacon")){
+                    isMeat = true;
         }
-        return price;
+        return isMeat;
     }
 
-    public double price2(){
-        double price = 0;
-        if (getName().trim().equalsIgnoreCase("American") || getName().trim().equalsIgnoreCase("Provolone")
-                || getName().trim().equalsIgnoreCase("Cheddar") || getName().trim().equalsIgnoreCase("swiss")){
-            price = 1.50;
-        } else {
-            price = 2.00;
-        }
-        return price;
-    }
-
-    public double price3(){
-        double price = 0;
-        if (getName().trim().equalsIgnoreCase("American") || getName().trim().equalsIgnoreCase("Provolone")
-                || getName().trim().equalsIgnoreCase("Cheddar") || getName().trim().equalsIgnoreCase("swiss")){
-            price = 2.25;
-        } else {
-            price = 3.00;
-        }
-        return price;
-    }
-
-        @Override
+    @Override
         public double getPrice () {
-        ;if (isExtra()){
-            return price1() + price2() + price3();
-            }
         return 0;
-    }
-
+        }
 }
