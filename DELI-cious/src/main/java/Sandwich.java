@@ -11,33 +11,18 @@ public class Sandwich implements Menu{
     private static final double priceOf8 = 7.00;
     private static final double priceOf12 = 8.50;
 
-    public Sandwich(int size, String typeOfBread, List<Topping> topping, boolean isToasted) {
+    public Sandwich(int size, String typeOfBread, boolean isToasted) {
         this.size = size;
         this.typeOfBread = typeOfBread;
-        this.toppings = topping;
         this.isToasted = isToasted;
     }
 
     public int getSize() {
-        if (size == 1) {
-            return 4;
-        } else if (size == 2) {
-            return 8;
-        } else if (size == 3) {
-            return 12;
-        }
-
-        return 0;
+     return size;
     }
 
     public String getTypeOfBread() {
-        return switch (typeOfBread.trim()) {
-            case "1" -> "White";
-            case "2" -> "Wheat";
-            case "3" -> "Rye";
-            case "4" -> "Wrap";
-            default -> typeOfBread;
-        };
+        return typeOfBread;
     }
 
     public void addToppings(Topping topping) {
@@ -56,20 +41,23 @@ public class Sandwich implements Menu{
 
     @Override
     public String getName() {
-        return "";
+        return getSize() + "\" "+ getTypeOfBread() + " Sandwich" ;
     }
 
     @Override
     public double getPrice() {
-        if (getSize() == 4) {
-            return priceOf4;
-        } else if (getSize() == 8) {
-            return getPrice();
-        } else if (getSize() == 12) {
-            return priceOf12;
+       double price = priceOf12;
+
+        if (getTypeOfBread().trim().equalsIgnoreCase("White") || getTypeOfBread().trim().equalsIgnoreCase("Wheat")
+                || getTypeOfBread().trim().equalsIgnoreCase("Rye") || getTypeOfBread().trim().equalsIgnoreCase("Wrap")){
+            if (getSize() == 4){
+                price = priceOf4;
+            } else if (getSize() == 8) {
+                price = priceOf8;
+            }
         }
 
-        return 0;
+        return price;
 
     }
 }
