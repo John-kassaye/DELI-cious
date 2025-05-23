@@ -3,7 +3,10 @@ import java.util.Scanner;
 public class UserInterface {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        homeScreen();
+//        homeScreen();
+        Sandwich sandwich = new Sandwich(8,"White",false);
+        System.out.println(sandwich.getPrice());
+        System.out.println(sandwich.getName());
     }
 
     public static void homeScreen(){
