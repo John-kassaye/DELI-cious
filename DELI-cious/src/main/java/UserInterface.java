@@ -12,6 +12,13 @@ public class UserInterface {
                 1- New Order
                 2- Exit""";
         System.out.println(homeScreen);
+        String order = scanner.nextLine();
+
+        if (order.equalsIgnoreCase("1")){
+            orderScreen();
+        } else {
+            System.exit(0);
+        }
     }
 
     public static void orderScreen(){
@@ -22,37 +29,90 @@ public class UserInterface {
                 4- Checkout
                 0- Cancel order""";
         System.out.println(order);
+        choice();
     }
 
-    public static void addSandwich(){
-        String bread = """
+    public static void choice(){
+        String choice = scanner.nextLine();
+        switch (choice){
+            case "1":
+                addSandwich();
+                break;
+            case "2":
+                addDrink();
+                break;
+            case "4":
+                break;
+            default:
+                System.out.println("Invalid input please try again.");
+        }
+    }
+
+    public static void addSandwich() {
+        String sandwichBread = """
                 Select your bread:
                 1- White
                 2- Wheat
                 3- Rye
                 4- Wrap""";
-        System.out.println(bread);
-        String choice = scanner.nextLine();
+        System.out.println(sandwichBread);
+        String bread = scanner.nextLine();
 
         String sandwichSize = """
                 1- 4""
                 2- 8""
-                3- 12""";
+                3- 12" /t""";
         System.out.println(sandwichSize);
         String size = scanner.nextLine();
 
-        String sandwichTopping = """
-                1- Meat
-                2- Cheese
-                3- Other toppings
-                4- Select sauces""";
-        System.out.println(sandwichTopping);
-        String topping = scanner.nextLine();
+        String meat = "";
+        String cheese = "";
+        String regular = "";
+        String sauce = "";
+
+        boolean input = true;
+        while (input) {
+            String sandwichTopping = """
+                    1- Meat
+                    2- Cheese
+                    3- Other toppings
+                    4- Select sauces
+                    5- back""";
+
+            System.out.println(sandwichTopping);
+            String topping = scanner.nextLine();
+
+            switch (topping) {
+                case "1":
+                    meatTopping();
+                    meat = scanner.nextLine();
+                    break;
+                case "2":
+                    cheeseTopping();
+                    cheese = scanner.nextLine();
+                    break;
+                case "3":
+                    regularTopping();
+                    regular = scanner.nextLine();
+                    break;
+                case "4":
+                    saucesTopping();
+                    sauce = scanner.nextLine();
+                    break;
+                case "5":
+                    input = false;
+                    break;
+                default:
+                    System.out.println("Invalid input");
+            }
+        }
     }
 
-    public static void addDrink(){
+    public static Drink addDrink(){
         String drinkSize = """
+               
                 Select drink size:
+               
                 1- Small
                 2- Medium
                 3- Large""";
@@ -60,10 +120,70 @@ public class UserInterface {
         String size = scanner.nextLine();
 
         String drinkFlavor = """
+                
+                Select flavor
+                1- Lemonde
+                2- Coca
                 """;
         System.out.println(drinkFlavor);
         String flavor = scanner.nextLine();
+
+        return new Drink(Integer.parseInt(size),flavor);
+
     }
 
-    public static void checkoutDisplay(){}
+    public static void meatTopping() {
+            String topping = """
+                   
+                    Meats
+                   
+                    1- steak
+                    2- ham
+                    3- salami
+                    4- roast beef - chicken
+                    5- bacon""";
+            System.out.println(topping);
+    }
+    public static void cheeseTopping(){
+        String cheese = """
+               
+                Cheese
+                
+                1- american
+                2- provolone
+                3- cheddar
+                4- swiss""";
+        System.out.println(cheese);
+    }
+
+    public static void regularTopping(){
+        String regular = """
+                
+                Regular Toppings
+                
+                1- lettuce
+                2- peppers
+                3- onions
+                4- tomatoes
+                5- jalapeños
+                6- cucumbers
+                7- pickles
+                8- guacamole
+                9-- mushrooms""";
+        System.out.println(regular);
+    }
+
+    public static void saucesTopping(){
+        String sauces = """
+                
+                Sauces
+                
+                1- mayo
+                2- mustard
+                3- ketchup
+                4- ranch
+                5- thousand islands
+                6- vinaigrette""";
+        System.out.println(sauces);
+    }
 }
