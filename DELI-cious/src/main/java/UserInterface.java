@@ -16,6 +16,7 @@ public class UserInterface {
     public static void homeScreen(){
         String homeScreen = """
                              Welcome to the DELICIOUS
+                
                 1- New Order
                 2- Exit""";
         System.out.println(homeScreen);
