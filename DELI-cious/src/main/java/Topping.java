@@ -14,6 +14,8 @@ public abstract class Topping {
     public boolean isExtra() {
         return isExtra;
     }
+
+    public abstract double getPrice();
 }
 
 

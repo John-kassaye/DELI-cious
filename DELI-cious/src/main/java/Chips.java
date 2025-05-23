@@ -7,6 +7,10 @@ public class Chips implements Menu{
         this.price = price;
     }
 
+    public String getType() {
+        return type;
+    }
+
     @Override
     public String getName() {
         return "";

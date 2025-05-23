@@ -40,6 +40,10 @@ public class Sandwich implements Menu{
         toppings.add(topping);
     }
 
+    public double calculatePrice(){
+        return 0;
+    }
+
     @Override
     public String toString() {
         return "  size:  " + getSize() + '\'' +

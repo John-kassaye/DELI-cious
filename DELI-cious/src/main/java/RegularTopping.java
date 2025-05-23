@@ -3,7 +3,8 @@ public class RegularTopping extends Topping{
         super(name, isExtra);
     }
 
-    public double getPRice(){
+    @Override
+    public double getPrice() {
         return 0;
     }
 }
