@@ -5,8 +5,12 @@ public class UserInterface {
     public static void main(String[] args) {
 //        homeScreen();
         Sandwich sandwich = new Sandwich(8,"White",false);
-        System.out.println(sandwich.getPrice());
-        System.out.println(sandwich.getName());
+        PremiumTopping premiumTopping = new PremiumTopping("Steak",true,8);
+        System.out.println(premiumTopping.isMeat());
+        System.out.println(premiumTopping.isCheese());
+        System.out.println(premiumTopping.getName());
+        System.out.println(premiumTopping.getPrice());
+
     }
 
     public static void homeScreen(){
