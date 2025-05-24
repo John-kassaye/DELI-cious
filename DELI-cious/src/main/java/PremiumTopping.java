@@ -54,13 +54,13 @@ public class PremiumTopping extends Topping {
             }
         } else if (isCheese()) {
             if (getSandwichSize() == 4) {
-                basePrice = 1.00;
+                basePrice = 0.75;
                 extraPrice = 0.30;
             } else if (getSandwichSize() == 8) {
-                basePrice = 2.00;
+                basePrice = 1.5;
                 extraPrice = 0.60;
             } else if (getSandwichSize() == 12) {
-                basePrice = 3.00;
+                basePrice = 2.25;
                 extraPrice = 0.90;
             }
         }
