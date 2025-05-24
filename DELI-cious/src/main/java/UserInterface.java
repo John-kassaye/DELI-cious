@@ -1,15 +1,25 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 //        homeScreen();
-        Sandwich sandwich = new Sandwich(8,"White",false);
+
         PremiumTopping premiumTopping = new PremiumTopping("Steak",true,8);
-        System.out.println(premiumTopping.isMeat());
-        System.out.println(premiumTopping.isCheese());
-        System.out.println(premiumTopping.getName());
-        System.out.println(premiumTopping.getPrice());
+        PremiumTopping premiumTopping2 = new PremiumTopping("American",false,8);
+        RegularTopping regularTopping = new RegularTopping("Steak",true);
+
+        List<Topping> toppings= new ArrayList<>();
+        toppings.add(premiumTopping);
+        toppings.add(premiumTopping2);
+        toppings.add(regularTopping);
+
+        Sandwich sandwich = new Sandwich(8,"White",toppings,false);
+
+
+        System.out.println(sandwich.getPrice());
 
     }
 
