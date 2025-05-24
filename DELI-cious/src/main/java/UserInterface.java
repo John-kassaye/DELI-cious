@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -5,10 +7,20 @@ public class UserInterface {
     public static void main(String[] args) {
 //        homeScreen();
 
-//        Menu menu = new Sandwich(4,"White",true);
-        Menu menu1 = new Drink(4,"Lemonade");
-//
-//        System.out.println(menu.getPrice());
+        PremiumTopping premiumTopping = new PremiumTopping("Steak",true,8);
+        PremiumTopping premiumTopping2 = new PremiumTopping("American",false,8);
+        RegularTopping regularTopping = new RegularTopping("Steak",true);
+
+        List<Topping> toppings= new ArrayList<>();
+        toppings.add(premiumTopping);
+        toppings.add(premiumTopping2);
+        toppings.add(regularTopping);
+
+        Sandwich sandwich = new Sandwich(8,"White",toppings,false);
+
+
+        System.out.println(sandwich.getPrice());
+
     }
 
     public static void homeScreen(){
