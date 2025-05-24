@@ -7,4 +7,8 @@ public class RegularTopping extends Topping{
     public double getPrice() {
         return 0;
     }
+
+    public String toString(){
+        return String.format("%-30s %s","\nRegular topping",getName());
+    }
 }

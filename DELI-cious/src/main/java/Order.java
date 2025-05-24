@@ -9,10 +9,19 @@ public class Order {
     }
 
     public double calculateTotal(){
-        return 0;
+       double price = 0;
+        for (Menu menu : menus){
+            price+= menu.getPrice();
+        }
+
+        return price;
     }
 
     public void display(){
+        for (Menu menu : menus){
+            System.out.println(menu);
+        }
 
+        System.out.printf("%-30s %.2f","\nHere is your Total: " , calculateTotal());
     }
 }
