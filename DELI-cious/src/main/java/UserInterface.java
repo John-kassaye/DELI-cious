@@ -18,7 +18,8 @@ public class UserInterface {
 
         Sandwich sandwich = new Sandwich(8,"White",toppings,false);
 
-
+        Menu m = new Sandwich(8,"White",toppings,false);
+        System.out.println(m.getPrice());
         System.out.println(sandwich.getPrice());
 
     }
