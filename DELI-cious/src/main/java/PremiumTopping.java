@@ -67,4 +67,9 @@ public class PremiumTopping extends Topping {
 
         return isExtra() ? basePrice + extraPrice : basePrice;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-30s %s", "\nPremium Topping",getName());
+    }
 }

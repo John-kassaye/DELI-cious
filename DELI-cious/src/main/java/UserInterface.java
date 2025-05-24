@@ -16,17 +16,9 @@ public class UserInterface {
         toppings.add(premiumTopping2);
         toppings.add(regularTopping);
 
-        Sandwich sandwich = new Sandwich(8,"White",toppings,false);
-        Drink drink = new Drink(4,"Lemonade");
-        Drink drink2 = new Drink(8,"Lemonade");
-
         Menu menu =  new Sandwich(8,"White",toppings,false);
         Menu menu1 = new Drink(4,"Lemonade");
         Menu menu3 = new Drink(8,"Lemonade");
-
-        System.out.println(sandwich.getPrice());
-        System.out.println(drink.getPrice());
-        System.out.println(drink2.getPrice());
 
         List<Menu> orderList = new ArrayList<>();
 

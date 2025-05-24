@@ -6,6 +6,7 @@ public class Sandwich implements Menu{
     private String typeOfBread;
     private List<Topping> toppings = new ArrayList<>();
     private boolean isToasted;
+    private Topping topping;
 
     private static final double priceOf4 = 5.50;
     private static final double priceOf8 = 7.00;
@@ -36,8 +37,9 @@ public class Sandwich implements Menu{
 
     @Override
     public String toString() {
-        return "  size:  " + getSize() + '\'' +
-                " typeOfBread:  " + getTypeOfBread();
+        return String.format("%-30s %d", "Size:" , getSize()) +
+                String.format("%-30s %s", "\nBread:" , getTypeOfBread()) +
+                toppings.toString();
     }
 
     @Override
