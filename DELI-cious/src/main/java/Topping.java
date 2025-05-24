@@ -8,7 +8,18 @@ public abstract class Topping {
     }
 
     public String getName() {
-        return name;
+        return switch (name.trim()) {
+            case "1" -> "Steak";
+            case "2" -> "Ham";
+            case "3" -> "Salami";
+            case "4" -> "Roast Beef";
+            case "5" -> "Chicken";
+            case "6" -> "Bacon";
+            case "7" -> "American";
+            case "8" -> "Provolone";
+            case "9" -> "Cheddar";
+            default -> "Swiss";
+        };
     }
 
     public boolean isExtra() {

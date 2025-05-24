@@ -5,33 +5,33 @@ import java.util.Scanner;
 public class UserInterface {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-//        homeScreen();
+        homeScreen();
 
-        Topping premiumTopping = new PremiumTopping("Steak",true,8);
-        Topping premiumTopping2 = new PremiumTopping("American",false,8);
-        Topping premiumTopping3 = new PremiumTopping("Ham",false,8);
-        Topping regularTopping = new RegularTopping("Steak",true);
-
-        List<Topping> toppings= new ArrayList<>();
-        toppings.add(premiumTopping);
-        toppings.add(premiumTopping2);
-        toppings.add(premiumTopping3);
-        toppings.add(regularTopping);
-
-        Menu menu =  new Sandwich(8,"Wheat",toppings,false);
-        Menu menu1 = new Drink(4,"Lemonade");
-        Menu menu3 = new Drink(8,"Lemonade");
-        Menu menu2 = new Chips("Chips");
-
-        List<Menu> orderList = new ArrayList<>();
-
-
-        Order order = new Order();
-        order.addMenu(menu);
-        order.addMenu(menu1);
-        order.addMenu(menu2);
-
-        order.display();
+//        Topping premiumTopping = new PremiumTopping("Steak",true,8);
+//        Topping premiumTopping2 = new PremiumTopping("American",false,8);
+//        Topping premiumTopping3 = new PremiumTopping("Ham",false,8);
+//        Topping regularTopping = new RegularTopping("Steak",true);
+//
+//        List<Topping> toppings= new ArrayList<>();
+//        toppings.add(premiumTopping);
+//        toppings.add(premiumTopping2);
+//        toppings.add(premiumTopping3);
+//        toppings.add(regularTopping);
+//
+//        Menu menu =  new Sandwich(8,"Wheat",toppings,false);
+//        Menu menu1 = new Drink(4,"Lemonade");
+//        Menu menu3 = new Drink(8,"Lemonade");
+//        Menu menu2 = new Chips("Chips");
+//
+//        List<Menu> orderList = new ArrayList<>();
+//
+//
+//        Order order = new Order();
+//        order.addMenu(menu);
+//        order.addMenu(menu1);
+//        order.addMenu(menu2);
+//
+//        order.display();
 
     }
 
@@ -89,9 +89,9 @@ public class UserInterface {
         String bread = scanner.nextLine();
 
         String sandwichSize = """
-                1- 4""
-                2- 8""
-                3- 12" /t""";
+                4- 4""
+                8- 8""
+                12- 12" /t""";
         System.out.println(sandwichSize);
         String size = scanner.nextLine();
 
@@ -99,6 +99,9 @@ public class UserInterface {
         String cheese = "";
         String regular = "";
         String sauce = "";
+        boolean extraMeat = false;
+        boolean extraCheese = false;
+        boolean isToasted = false;
 
         boolean input = true;
         while (input) {
@@ -116,10 +119,16 @@ public class UserInterface {
                 case "1":
                     meatTopping();
                     meat = scanner.nextLine();
+                    System.out.println("Extra?");
+                    String isExtraMeat = scanner.nextLine();
+                    extraMeat = isExtraMeat.trim().equals("1") ? true : false;
                     break;
                 case "2":
                     cheeseTopping();
                     cheese = scanner.nextLine();
+                    System.out.println("Extra?\n1-yes\n2-no");
+                    String isExtraCheese = scanner.nextLine();
+                    extraCheese = isExtraCheese.trim().equals("1") ? true : false;
                     break;
                 case "3":
                     regularTopping();
@@ -136,6 +145,25 @@ public class UserInterface {
                     System.out.println("Invalid input");
             }
         }
+
+        System.out.println("Is toasted");
+        String toasted = scanner.nextLine();
+        isToasted = toasted.trim().equals("1") ? true : false;
+
+        List<Topping> toppings = new ArrayList<>();
+
+        if (!meat.isBlank()){
+        toppings.add(new PremiumTopping(meat,extraMeat,Integer.parseInt(size)));
+        }
+        if (!cheese.isBlank()){
+        toppings.add(new PremiumTopping(cheese,extraCheese,Integer.parseInt(size)));
+        }
+        Sandwich sandwich = new Sandwich(Integer.parseInt(size),bread,toppings,isToasted);
+
+        Order order = new Order();
+        order.addMenu(sandwich);
+
+        order.display();
     }
 
     public static Drink addDrink(){
@@ -152,7 +180,7 @@ public class UserInterface {
         String drinkFlavor = """
                 
                 Select flavor
-                1- Lemonde
+                1- Lemonade
                 2- Coca
                 """;
         System.out.println(drinkFlavor);
@@ -170,8 +198,9 @@ public class UserInterface {
                     1- steak
                     2- ham
                     3- salami
-                    4- roast beef - chicken
-                    5- bacon""";
+                    4- roast beef -
+                    5-chicken
+                    6- bacon""";
             System.out.println(topping);
     }
     public static void cheeseTopping(){
@@ -179,10 +208,10 @@ public class UserInterface {
                
                 Cheese
                 
-                1- american
-                2- provolone
-                3- cheddar
-                4- swiss""";
+                7- american
+                8- provolone
+                9- cheddar
+                10- swiss""";
         System.out.println(cheese);
     }
 

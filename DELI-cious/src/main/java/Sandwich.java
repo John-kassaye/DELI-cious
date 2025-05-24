@@ -24,7 +24,12 @@ public class Sandwich implements Menu {
     }
 
     public String getTypeOfBread() {
-        return typeOfBread;
+        return switch (typeOfBread) {
+            case "1" -> "White";
+            case "2" -> "Wheat";
+            case "3" -> "Rye";
+            default -> "Wrap";
+        };
     }
 
     public void addToppings(Topping topping) {
