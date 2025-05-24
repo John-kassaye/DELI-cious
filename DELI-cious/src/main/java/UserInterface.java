@@ -5,10 +5,10 @@ public class UserInterface {
     public static void main(String[] args) {
 //        homeScreen();
 
-        Menu menu = new Sandwich(4,"White",true);
+//        Menu menu = new Sandwich(4,"White",true);
         Menu menu1 = new Drink(4,"Lemonade");
-
-        System.out.println(menu.getPrice());
+//
+//        System.out.println(menu.getPrice());
     }
 
     public static void homeScreen(){
