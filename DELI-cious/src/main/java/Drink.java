@@ -15,16 +15,17 @@ public class Drink implements Menu {
         return flavor;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%-30s %d","\nSize:",getSize()) +
-                String.format("%-30s %s","\nFlavor:",getFlavor());
-    }
+//    @Override
+//    public String toString() {
+//        return String.format("%-30s %d","\nSize:",getSize()) +
+//                String.format("%-30s %s","\nFlavor:",getFlavor());
+//    }
 
 
     @Override
     public String getName() {
-        return getSize() +"\" " + getFlavor();
+       return String.format("%-30s %d","\nSize:",getSize()) +
+                String.format("%-30s %s","\nFlavor:",getFlavor());
     }
 
     @Override

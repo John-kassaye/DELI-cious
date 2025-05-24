@@ -11,7 +11,8 @@ public class Chips implements Menu{
 
     @Override
     public String getName() {
-        return "";
+        return String.format("%-30s %s","\nType",getType()) +
+                String.format("%-30s %s","\nPrice",getPrice());
     }
 
     @Override
@@ -19,9 +20,9 @@ public class Chips implements Menu{
         return 1.50;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%-30s %s","\nType",getType()) +
-                String.format("%-30s %s","\nPrice",getPrice());
-    }
+//    @Override
+//    public String toString() {
+//        return String.format("%-30s %s","\nType",getType()) +
+//                String.format("%-30s %s","\nPrice",getPrice());
+//    }
 }

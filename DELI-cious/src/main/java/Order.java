@@ -24,13 +24,13 @@ public class Order {
             if (menu != null) {
                 if (menu instanceof Sandwich sandwich) {
                     System.out.println("*****Sandwich*****");
-                    System.out.println(sandwich);
+                    System.out.println(sandwich.getName());
                 } else if (menu instanceof Drink drink) {
                     System.out.println("\n*****Drink*****");
-                    System.out.println(drink);
+                    System.out.println(drink.getName());
                 } else if (menu instanceof Chips chips) {
                     System.out.println("\n*****Chips*****");
-                    System.out.println(chips);
+                    System.out.println(chips.getName());
                 }
             }
         }

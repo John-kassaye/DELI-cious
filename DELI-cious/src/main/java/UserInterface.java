@@ -247,9 +247,9 @@ public class UserInterface {
                 
                 select chips type
                 
-                1: Potato Chips
-                2: Tortilla Chips
-                3: Pita Chips
+                1- Potato Chips
+                2- Tortilla Chips
+                3- Pita Chips
                 """;
         System.out.println(chips);
         String type = scanner.nextLine();

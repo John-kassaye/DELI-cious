@@ -63,18 +63,22 @@ public class Sandwich implements Menu {
         return format.toString();
     }
 
+//    @Override
+//    public String toString() {
+//        return String.format("%-30s %d", "\nSize:", getSize()) +
+//                String.format("%-30s %s", "\nBread:", getTypeOfBread()) +
+//                toppingToString() +
+//                String.format("%-30s %s", "\nToasted", dis());
+//
+//    }
+
     @Override
-    public String toString() {
+    public String getName() {
         return String.format("%-30s %d", "\nSize:", getSize()) +
                 String.format("%-30s %s", "\nBread:", getTypeOfBread()) +
                 toppingToString() +
                 String.format("%-30s %s", "\nToasted", dis());
 
-    }
-
-    @Override
-    public String getName() {
-        return getSize() + "\" " + getTypeOfBread() + " Sandwich";
     }
 
     @Override
