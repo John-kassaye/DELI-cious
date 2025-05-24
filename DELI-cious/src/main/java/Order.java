@@ -22,6 +22,6 @@ public class Order {
             System.out.println(menu);
         }
 
-        System.out.println(calculateTotal());
+        System.out.printf("%-30s %.2f","\nHere is your Total: " , calculateTotal());
     }
 }

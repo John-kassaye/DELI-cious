@@ -17,8 +17,8 @@ public class Drink implements Menu {
 
     @Override
     public String toString() {
-        return " size: " + size + '\'' +
-                " flavor: " + flavor;
+        return String.format("%-30s %d","Size:",getSize()) +
+                String.format("%-30s %s","\nFlavor:",getFlavor());
     }
 
     @Override

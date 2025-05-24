@@ -17,6 +17,7 @@ public class Sandwich implements Menu{
         this.typeOfBread = typeOfBread;
         this.isToasted = isToasted;
         this.toppings = toppings;
+        this.topping = topping;
     }
 
     public int getSize() {
@@ -25,6 +26,10 @@ public class Sandwich implements Menu{
 
     public String getTypeOfBread() {
         return typeOfBread;
+    }
+
+    public Topping getTopping() {
+        return topping;
     }
 
     public void addToppings(Topping topping) {
@@ -37,7 +42,7 @@ public class Sandwich implements Menu{
 
     @Override
     public String toString() {
-        return String.format("%-30s %d", "Size:" , getSize()) +
+        return String.format("%-30s %d", "\nSize:" , getSize()) +
                 String.format("%-30s %s", "\nBread:" , getTypeOfBread()) +
                 toppings.toString();
     }

@@ -70,6 +70,6 @@ public class PremiumTopping extends Topping {
 
     @Override
     public String toString() {
-        return String.format("%-30s %s", "\nPremium Topping",getName());
+        return String.format("%-30s %s", "\nPremium Topping:",getName());
     }
 }

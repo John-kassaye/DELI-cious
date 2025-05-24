@@ -1,10 +1,8 @@
 public class Chips implements Menu{
    private String type;
-   private double price;
 
-    public Chips(String type, double price) {
+    public Chips(String type) {
         this.type = type;
-        this.price = price;
     }
 
     public String getType() {
@@ -18,6 +16,12 @@ public class Chips implements Menu{
 
     @Override
     public double getPrice() {
-        return 0;
+        return 1.50;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-30s %s","\nType",getType()) +
+                String.format("%-30s %s","\nPrice",getPrice());
     }
 }

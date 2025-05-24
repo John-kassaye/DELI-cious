@@ -16,9 +16,10 @@ public class UserInterface {
         toppings.add(premiumTopping2);
         toppings.add(regularTopping);
 
-        Menu menu =  new Sandwich(8,"White",toppings,false);
+        Menu menu =  new Sandwich(8,"Wheat",toppings,false);
         Menu menu1 = new Drink(4,"Lemonade");
         Menu menu3 = new Drink(8,"Lemonade");
+        Menu menu2 = new Chips("Chips");
 
         List<Menu> orderList = new ArrayList<>();
 
@@ -26,6 +27,7 @@ public class UserInterface {
         Order order = new Order();
         order.addMenu(menu);
         order.addMenu(menu1);
+        order.addMenu(menu2);
 
         order.display();
 
