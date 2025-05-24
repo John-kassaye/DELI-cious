@@ -39,7 +39,8 @@ public class UserInterface {
                              Welcome to the DELICIOUS
                 
                 1- New Order
-                2- Exit""";
+                2- Exit
+                """;
         System.out.println(homeScreen);
         String order = scanner.nextLine();
 
@@ -54,15 +55,18 @@ public class UserInterface {
 
         Menu sandwich = null;
         Menu drink = null;
+        Menu chips = null;
 
         boolean input = false;
 
         while (!input) {
             String order1 = """
+                
                 1- Add Sandwich
                 2- Add Drink
                 3- Add chips
-                4- Checkout""";
+                4- Checkout
+                5- Add Another order""";
             System.out.println(order1);
             String choice = scanner.nextLine();
             switch (choice) {
@@ -72,32 +76,33 @@ public class UserInterface {
                 case "2":
                     drink = drink();
                     break;
+                case "3":
+                    chips = chips();
+                    break;
                 case "4":
                     System.out.println("***** Checkout *****");
 
-                    Order order = new Order();
+                    Order order2 = new Order();
 
                     if (sandwich != null) {
-                        order.addMenu(sandwich);
-                    } else {
-                        System.out.println("No sandwich selected.");
+                        order2.addMenu(sandwich);
                     }
 
                     if (drink != null) {
-                        order.addMenu(drink);
-                    } else {
-                        System.out.println("No drink selected.");
+                        order2.addMenu(drink);
                     }
 
-                    if (sandwich == null && drink == null) {
+                    if (chips != null){
+                        order2.addMenu(chips);
+                    }
+
+                    if (sandwich == null && drink == null && chips == null) {
                         System.out.println("Nothing to checkout.");
-                    } else {
-                        order.display();
                     }
-
+                    order2.display();
                     break;
 
-                case "5":
+                    case "5":
                     input = true;
                 default:
                     System.out.println("Invalid input please try again.");
@@ -136,6 +141,7 @@ public class UserInterface {
         String sauce = "";
         boolean extraMeat = false;
         boolean extraCheese = false;
+        boolean extraRegular = false;
         boolean isToasted = false;
 
         boolean input = true;
@@ -168,6 +174,9 @@ public class UserInterface {
                 case "3":
                     regularTopping();
                     regular = scanner.nextLine();
+                    System.out.println("Extra?\n1: yes\n2: no");
+                    String isExtraRegular = scanner.nextLine();
+                    extraRegular = isExtraRegular.trim().equals("1") ? true : false;
                     break;
                 case "4":
                     saucesTopping();
@@ -193,6 +202,9 @@ public class UserInterface {
         if (!cheese.isBlank()){
         toppings.add(new PremiumTopping(cheese,extraCheese,size));
         }
+        if (!regular.isBlank()){
+            toppings.add(new RegularTopping(regular,extraRegular));
+        }
         return new Sandwich(size,bread,toppings,isToasted);
     }
 
@@ -201,23 +213,48 @@ public class UserInterface {
                
                 Select drink size:
                
-                4- Small
-                8- Medium
-                12- Large""";
+                1- Small
+                2- Medium
+                3- Large""";
         System.out.println(drinkSize);
-        String size = scanner.nextLine();
+        String sizeChoice = scanner.nextLine();
+        int size = 12;
+        if (sizeChoice.trim().equals("1")){
+            size = 4;
+        } else if (sizeChoice.trim().equals("2")) {
+            size = 8;
+        }
 
         String drinkFlavor = """
                 
                 Select flavor
+                
                 1- Lemonade
                 2- Coca
                 """;
         System.out.println(drinkFlavor);
-        String flavor = scanner.nextLine();
+        String flavorChoice = scanner.nextLine();
+        String flavor = "Coca";
 
-        return new Drink(Integer.parseInt(size),flavor);
+        if (flavorChoice.trim().equals("1")){
+            flavor = "Lemonade";
+        }
+        return new Drink(size,flavor);
+    }
 
+    public static Chips chips(){
+        String chips = """
+                
+                select chips type
+                
+                1: Potato Chips
+                2: Tortilla Chips
+                3: Pita Chips
+                """;
+        System.out.println(chips);
+        String type = scanner.nextLine();
+
+        return new Chips(type);
     }
 
     public static void meatTopping() {
