@@ -6,7 +6,6 @@ public class Sandwich implements Menu{
     private String typeOfBread;
     private List<Topping> toppings = new ArrayList<>();
     private boolean isToasted;
-    private Topping topping;
 
     private static final double priceOf4 = 5.50;
     private static final double priceOf8 = 7.00;
@@ -17,7 +16,7 @@ public class Sandwich implements Menu{
         this.typeOfBread = typeOfBread;
         this.isToasted = isToasted;
         this.toppings = toppings;
-        this.topping = topping;
+
     }
 
     public int getSize() {
@@ -28,10 +27,6 @@ public class Sandwich implements Menu{
         return typeOfBread;
     }
 
-    public Topping getTopping() {
-        return topping;
-    }
-
     public void addToppings(Topping topping) {
         toppings.add(topping);
     }
@@ -40,11 +35,36 @@ public class Sandwich implements Menu{
         return 0;
     }
 
+    public boolean isToasted() {
+        return isToasted;
+    }
+
+    public String dis(){
+      String is = "No";
+        if (isToasted){
+            is = "Yes";
+        }
+
+        return is;
+    }
+
+    public String toppingToString(){
+        StringBuilder format = new StringBuilder();
+
+        for (Topping topping : toppings){
+           format.append(String.format(topping.toString()));
+        }
+
+        return format.toString();
+    }
+
     @Override
     public String toString() {
         return String.format("%-30s %d", "\nSize:" , getSize()) +
                 String.format("%-30s %s", "\nBread:" , getTypeOfBread()) +
-                toppings.toString();
+                toppingToString() +
+                String.format("%-30s %s","\nToasted", dis());
+
     }
 
     @Override

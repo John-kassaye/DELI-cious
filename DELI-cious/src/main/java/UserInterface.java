@@ -7,13 +7,15 @@ public class UserInterface {
     public static void main(String[] args) {
 //        homeScreen();
 
-        PremiumTopping premiumTopping = new PremiumTopping("Steak",true,8);
-        PremiumTopping premiumTopping2 = new PremiumTopping("American",false,8);
-        RegularTopping regularTopping = new RegularTopping("Steak",true);
+        Topping premiumTopping = new PremiumTopping("Steak",true,8);
+        Topping premiumTopping2 = new PremiumTopping("American",false,8);
+        Topping premiumTopping3 = new PremiumTopping("Ham",false,8);
+        Topping regularTopping = new RegularTopping("Steak",true);
 
         List<Topping> toppings= new ArrayList<>();
         toppings.add(premiumTopping);
         toppings.add(premiumTopping2);
+        toppings.add(premiumTopping3);
         toppings.add(regularTopping);
 
         Menu menu =  new Sandwich(8,"Wheat",toppings,false);
