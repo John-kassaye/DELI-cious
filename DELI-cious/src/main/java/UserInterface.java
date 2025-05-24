@@ -7,30 +7,29 @@ public class UserInterface {
     public static void main(String[] args) {
         homeScreen();
 
-//        Topping premiumTopping = new PremiumTopping("Steak",true,8);
-//        Topping premiumTopping2 = new PremiumTopping("American",false,8);
-//        Topping premiumTopping3 = new PremiumTopping("Ham",false,8);
-//        Topping regularTopping = new RegularTopping("Steak",true);
-//
-//        List<Topping> toppings= new ArrayList<>();
-//        toppings.add(premiumTopping);
-//        toppings.add(premiumTopping2);
-//        toppings.add(premiumTopping3);
-//        toppings.add(regularTopping);
-//
-//        Menu menu =  new Sandwich(8,"Wheat",toppings,false);
-//        Menu menu1 = new Drink(4,"Lemonade");
-//        Menu menu3 = new Drink(8,"Lemonade");
-//        Menu menu2 = new Chips("Chips");
-//
-//        List<Menu> orderList = new ArrayList<>();
-//
-//
-//        Order order = new Order();
-//        order.addMenu(menu);
-//        order.addMenu(menu1);
-//        order.addMenu(menu2);
-//
+        Topping premiumTopping = new PremiumTopping("Steak",true,8);
+        Topping premiumTopping2 = new PremiumTopping("American",false,8);
+        Topping premiumTopping3 = new PremiumTopping("Ham",false,8);
+        Topping regularTopping = new RegularTopping("Steak",true);
+
+        List<Topping> toppings= new ArrayList<>();
+        toppings.add(premiumTopping);
+        toppings.add(premiumTopping2);
+        toppings.add(premiumTopping3);
+        toppings.add(regularTopping);
+
+        Menu menu =  new Sandwich(8,"Wheat",toppings,false);
+        Menu menu1 = new Drink(4,"Lemonade");
+        Menu menu3 = new Drink(8,"Lemonade");
+
+        List<Menu> orderList = new ArrayList<>();
+
+
+        Order order = new Order();
+        order.addMenu(menu);
+        order.addMenu(menu1);
+        order.addMenu(menu3);
+
 //        order.display();
 
     }
@@ -51,34 +50,62 @@ public class UserInterface {
         }
     }
 
-    public static void orderScreen(){
-        String order = """
+    public static void orderScreen() {
+
+        Menu sandwich = null;
+        Menu drink = null;
+
+        boolean input = false;
+
+        while (!input) {
+            String order1 = """
                 1- Add Sandwich
                 2- Add Drink
                 3- Add chips
-                4- Checkout
-                0- Cancel order""";
-        System.out.println(order);
-        choice();
-    }
+                4- Checkout""";
+            System.out.println(order1);
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1":
+                    sandwich = sandwich();
+                    break;
+                case "2":
+                    drink = drink();
+                    break;
+                case "4":
+                    System.out.println("***** Checkout *****");
 
-    public static void choice(){
-        String choice = scanner.nextLine();
-        switch (choice){
-            case "1":
-                addSandwich();
-                break;
-            case "2":
-                addDrink();
-                break;
-            case "4":
-                break;
-            default:
-                System.out.println("Invalid input please try again.");
+                    Order order = new Order();
+
+                    if (sandwich != null) {
+                        order.addMenu(sandwich);
+                    } else {
+                        System.out.println("No sandwich selected.");
+                    }
+
+                    if (drink != null) {
+                        order.addMenu(drink);
+                    } else {
+                        System.out.println("No drink selected.");
+                    }
+
+                    if (sandwich == null && drink == null) {
+                        System.out.println("Nothing to checkout.");
+                    } else {
+                        order.display();
+                    }
+
+                    break;
+
+                case "5":
+                    input = true;
+                default:
+                    System.out.println("Invalid input please try again.");
+                    break;
+            }
         }
     }
-
-    public static void addSandwich() {
+    public static Sandwich sandwich() {
         String sandwichBread = """
                 Select your bread:
                 1- White
@@ -89,12 +116,20 @@ public class UserInterface {
         String bread = scanner.nextLine();
 
         String sandwichSize = """
-                4- 4""
-                8- 8""
-                12- 12" /t""";
+                1- 4""
+                2- 8""
+                3- 12" """;
         System.out.println(sandwichSize);
-        String size = scanner.nextLine();
-
+        String sizeChoice = scanner.nextLine();
+        int size = switch (sizeChoice) {
+            case "1" -> 4;
+            case "2" -> 8;
+            case "3" -> 12;
+            default -> {
+                System.out.println("Invalid choice. Defaulting to 4\"");
+                yield 4;
+            }
+        };
         String meat = "";
         String cheese = "";
         String regular = "";
@@ -153,27 +188,22 @@ public class UserInterface {
         List<Topping> toppings = new ArrayList<>();
 
         if (!meat.isBlank()){
-        toppings.add(new PremiumTopping(meat,extraMeat,Integer.parseInt(size)));
+        toppings.add(new PremiumTopping(meat,extraMeat,size));
         }
         if (!cheese.isBlank()){
-        toppings.add(new PremiumTopping(cheese,extraCheese,Integer.parseInt(size)));
+        toppings.add(new PremiumTopping(cheese,extraCheese,size));
         }
-        Sandwich sandwich = new Sandwich(Integer.parseInt(size),bread,toppings,isToasted);
-
-        Order order = new Order();
-        order.addMenu(sandwich);
-
-        order.display();
+        return new Sandwich(size,bread,toppings,isToasted);
     }
 
-    public static Drink addDrink(){
+    public static Drink drink(){
         String drinkSize = """
                
                 Select drink size:
                
-                1- Small
-                2- Medium
-                3- Large""";
+                4- Small
+                8- Medium
+                12- Large""";
         System.out.println(drinkSize);
         String size = scanner.nextLine();
 
