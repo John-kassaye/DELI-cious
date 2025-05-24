@@ -11,10 +11,11 @@ public class Sandwich implements Menu{
     private static final double priceOf8 = 7.00;
     private static final double priceOf12 = 8.50;
 
-    public Sandwich(int size, String typeOfBread, boolean isToasted) {
+    public Sandwich(int size, String typeOfBread, List<Topping> toppings,boolean isToasted) {
         this.size = size;
         this.typeOfBread = typeOfBread;
         this.isToasted = isToasted;
+        this.toppings = toppings;
     }
 
     public int getSize() {
@@ -57,7 +58,10 @@ public class Sandwich implements Menu{
             }
         }
 
-        return price;
+        for(Topping topping : toppings){
+            price+= topping.getPrice();
+        }
 
+        return price;
     }
 }
