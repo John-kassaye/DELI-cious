@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sandwich implements Menu{
+public class Sandwich implements Menu {
     private int size;
     private String typeOfBread;
     private List<Topping> toppings = new ArrayList<>();
@@ -11,7 +11,7 @@ public class Sandwich implements Menu{
     private static final double priceOf8 = 7.00;
     private static final double priceOf12 = 8.50;
 
-    public Sandwich(int size, String typeOfBread, List<Topping> toppings,boolean isToasted) {
+    public Sandwich(int size, String typeOfBread, List<Topping> toppings, boolean isToasted) {
         this.size = size;
         this.typeOfBread = typeOfBread;
         this.isToasted = isToasted;
@@ -20,7 +20,7 @@ public class Sandwich implements Menu{
     }
 
     public int getSize() {
-     return size;
+        return size;
     }
 
     public String getTypeOfBread() {
@@ -31,7 +31,7 @@ public class Sandwich implements Menu{
         toppings.add(topping);
     }
 
-    public double calculatePrice(){
+    public double calculatePrice() {
         return 0;
     }
 
@@ -39,20 +39,20 @@ public class Sandwich implements Menu{
         return isToasted;
     }
 
-    public String dis(){
-      String is = "No";
-        if (isToasted){
+    public String dis() {
+        String is = "No";
+        if (isToasted) {
             is = "Yes";
         }
 
         return is;
     }
 
-    public String toppingToString(){
+    public String toppingToString() {
         StringBuilder format = new StringBuilder();
 
-        for (Topping topping : toppings){
-           format.append(String.format(topping.toString()));
+        for (Topping topping : toppings) {
+            format.append(String.format(topping.toString()));
         }
 
         return format.toString();
@@ -60,33 +60,33 @@ public class Sandwich implements Menu{
 
     @Override
     public String toString() {
-        return String.format("%-30s %d", "\nSize:" , getSize()) +
-                String.format("%-30s %s", "\nBread:" , getTypeOfBread()) +
+        return String.format("%-30s %d", "\nSize:", getSize()) +
+                String.format("%-30s %s", "\nBread:", getTypeOfBread()) +
                 toppingToString() +
-                String.format("%-30s %s","\nToasted", dis());
+                String.format("%-30s %s", "\nToasted", dis());
 
     }
 
     @Override
     public String getName() {
-        return getSize() + "\" "+ getTypeOfBread() + " Sandwich" ;
+        return getSize() + "\" " + getTypeOfBread() + " Sandwich";
     }
 
     @Override
     public double getPrice() {
-       double price = priceOf12;
+        double price = priceOf12;
 
         if (getTypeOfBread().trim().equalsIgnoreCase("White") || getTypeOfBread().trim().equalsIgnoreCase("Wheat")
-                || getTypeOfBread().trim().equalsIgnoreCase("Rye") || getTypeOfBread().trim().equalsIgnoreCase("Wrap")){
-            if (getSize() == 4){
+                || getTypeOfBread().trim().equalsIgnoreCase("Rye") || getTypeOfBread().trim().equalsIgnoreCase("Wrap")) {
+            if (getSize() == 4) {
                 price = priceOf4;
             } else if (getSize() == 8) {
                 price = priceOf8;
             }
         }
 
-        for(Topping topping : toppings){
-            price+= topping.getPrice();
+        for (Topping topping : toppings) {
+            price += topping.getPrice();
         }
 
         return price;

@@ -9,7 +9,7 @@ public class Order {
     }
 
     public double calculateTotal(){
-       double price = 0;
+        double price = 0;
         for (Menu menu : menus){
             price+= menu.getPrice();
         }
