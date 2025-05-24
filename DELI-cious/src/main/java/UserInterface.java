@@ -18,7 +18,7 @@ public class UserInterface {
         toppings.add(premiumTopping3);
         toppings.add(regularTopping);
 
-        Menu menu =  new Sandwich(8,"Wheat",toppings,false);
+        Menu menu =  new Sandwich(8,"Wheat",toppings,"Au jus",false);
         Menu menu1 = new Drink(4,"Lemonade");
         Menu menu3 = new Drink(8,"Lemonade");
 
@@ -205,7 +205,7 @@ public class UserInterface {
         if (!regular.isBlank()){
             toppings.add(new RegularTopping(regular,extraRegular));
         }
-        return new Sandwich(size,bread,toppings,isToasted);
+        return new Sandwich(size,bread,toppings,sauce,isToasted);
     }
 
     public static Drink drink(){
@@ -304,12 +304,12 @@ public class UserInterface {
                 
                 Sauces
                 
-                1- mayo
-                2- mustard
-                3- ketchup
-                4- ranch
-                5- thousand islands
-                6- vinaigrette""";
+                1- Mayo
+                2- Mustard
+                3- Ketchup
+                4- Ranch
+                5- Thousand Islands
+                6- Vinaigrette""";
         System.out.println(sauces);
     }
 }
