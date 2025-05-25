@@ -102,7 +102,7 @@ public class UserInterface {
                             for (Order o : menus){
                                 allMenus.addAll(o.getMenus());
                             }
-                            ReceiptManagement.writingReceipt(orders);
+                            ReceiptManagement.writingReceipt(allMenus);
                             input = false;
                         } else {
                             menus.clear();
