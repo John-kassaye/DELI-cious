@@ -196,16 +196,16 @@ public class UserInterface {
 
         List<Topping> toppings = new ArrayList<>();
 
-        if (!meat.isBlank()){
-        toppings.add(new PremiumTopping(meat,extraMeat,size));
+        if (!meat.isBlank()) {
+            toppings.add(new PremiumTopping(meat, extraMeat, size));
         }
-        if (!cheese.isBlank()){
-        toppings.add(new PremiumTopping(cheese,extraCheese,size));
+        if (!cheese.isBlank()) {
+            toppings.add(new PremiumTopping(cheese, extraCheese, size));
         }
-        if (!regular.isBlank()){
-            toppings.add(new RegularTopping(regular,extraRegular));
+        if (!regular.isBlank()) {
+            toppings.add(new RegularTopping(regular, extraRegular));
         }
-        return new Sandwich(size,bread,toppings,sauce,isToasted);
+        return new Sandwich(size, bread, toppings, sauce, isToasted);
     }
 
     public static Drink drink(){
