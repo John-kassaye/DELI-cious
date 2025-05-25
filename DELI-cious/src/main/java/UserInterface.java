@@ -145,9 +145,9 @@ public class UserInterface {
                 yield 4;
             }
         };
-        String meat = "";
-        String cheese = "";
-        String regular = "";
+        List<Topping> meats = new ArrayList<>();
+        List<Topping> cheeses = new ArrayList<>();
+        List<Topping> regulars = new ArrayList<>();
         String sauce = "";
         boolean extraMeat = false;
         boolean extraCheese = false;
@@ -169,24 +169,27 @@ public class UserInterface {
             switch (topping) {
                 case "1":
                     meatTopping();
-                    meat = scanner.nextLine();
+                    String meat = scanner.nextLine();
                     System.out.println("Extra?");
                     String isExtraMeat = scanner.nextLine();
                     extraMeat = isExtraMeat.trim().equals("1") ? true : false;
+                    meats.add(new PremiumTopping(meat,extraMeat,size));
                     break;
                 case "2":
                     cheeseTopping();
-                    cheese = scanner.nextLine();
+                    String cheese = scanner.nextLine();
                     System.out.println("Extra?\n1-yes\n2-no");
                     String isExtraCheese = scanner.nextLine();
                     extraCheese = isExtraCheese.trim().equals("1") ? true : false;
+                    cheeses.add(new PremiumTopping(cheese,extraCheese,size));
                     break;
                 case "3":
                     regularTopping();
-                    regular = scanner.nextLine();
+                    String regular = scanner.nextLine();
                     System.out.println("Extra?\n1: yes\n2: no");
                     String isExtraRegular = scanner.nextLine();
                     extraRegular = isExtraRegular.trim().equals("1") ? true : false;
+                    regulars.add(new RegularTopping(regular,extraRegular));
                     break;
                 case "4":
                     saucesTopping();
@@ -205,16 +208,10 @@ public class UserInterface {
         isToasted = toasted.trim().equals("1") ? true : false;
 
         List<Topping> toppings = new ArrayList<>();
+        toppings.addAll(meats);
+        toppings.addAll(cheeses);
+        toppings.addAll(regulars);
 
-        if (!meat.isBlank()) {
-            toppings.add(new PremiumTopping(meat, extraMeat, size));
-        }
-        if (!cheese.isBlank()) {
-            toppings.add(new PremiumTopping(cheese, extraCheese, size));
-        }
-        if (!regular.isBlank()) {
-            toppings.add(new RegularTopping(regular, extraRegular));
-        }
         return new Sandwich(size, bread, toppings, sauce, isToasted);
     }
 
