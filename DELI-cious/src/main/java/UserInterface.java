@@ -30,7 +30,7 @@ public class UserInterface {
 
         List<Order> menus = new ArrayList<>();
 
-        List<Menu> sandwich= null;
+        Menu sandwich= null;
         Menu drink = null;
         Menu chips = null;
 
@@ -62,7 +62,7 @@ public class UserInterface {
                     System.out.println("***** Checkout *****");
 
                     if (sandwich != null) {
-                        orders.addAll(sandwich);
+                        orders.add(sandwich);
                     }
 
                     if (drink != null) {
@@ -105,7 +105,7 @@ public class UserInterface {
             }
         }
     }
-    public static List<Menu> sandwich() {
+    public static Menu sandwich() {
         String sandwichBread = """
                 Select your bread:
                 1- White
@@ -197,10 +197,8 @@ public class UserInterface {
         toppings.addAll(cheeses);
         toppings.addAll(regulars);
 
-        List<Menu> sandwiches = new ArrayList<>();
+        return new Sandwich(size, bread, toppings, sauce, isToasted);
 
-        sandwiches.add(new Sandwich(size, bread, toppings, sauce, isToasted));
-        return sandwiches;
     }
 
     public static Drink drink(){
