@@ -1,0 +1,9 @@
+
+Size:                         8
+Bread:                        White
+Premium Topping:              American
+Sauce                         Mustard
+Toasted                       Yes
+Size:                         8
+Flavor:                       Lemonade
+Total price:                   11.60 
