@@ -4,9 +4,9 @@ import java.util.List;
 public class Order {
     List<Menu> menus = new ArrayList<>();
 
-    public void addMenu(Menu menu) {
+    public void addMenu(List<Menu> menu) {
             if (menu != null) {
-                menus.add(menu);
+                menus.addAll(menu);
             }
     }
 

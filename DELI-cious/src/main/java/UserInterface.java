@@ -28,20 +28,24 @@ public class UserInterface {
 
     public static void orderScreen() {
 
-        Menu sandwich = null;
+        List<Order> menus = new ArrayList<>();
+
+        List<Menu> sandwich= null;
         Menu drink = null;
         Menu chips = null;
 
         boolean input = false;
 
         while (!input) {
+
+            List<Menu> orders = new ArrayList<>();
             String order1 = """
                 
                 1- Add Sandwich
                 2- Add Drink
                 3- Add chips
                 4- Checkout
-                5- Add Another order""";
+                5- Exit""";
             System.out.println(order1);
             String choice = scanner.nextLine();
             switch (choice) {
@@ -57,45 +61,51 @@ public class UserInterface {
                 case "4":
                     System.out.println("***** Checkout *****");
 
-                    List<Menu> menus = new ArrayList<>();
-                    Order order2 = new Order();
-
                     if (sandwich != null) {
-                        order2.addMenu(sandwich);
-                        menus.add(sandwich);
+                        orders.addAll(sandwich);
                     }
 
                     if (drink != null) {
-                        order2.addMenu(drink);
-                        menus.add(drink);
+                        orders.add(drink);
                     }
 
                     if (chips != null){
-                        order2.addMenu(chips);
-                        menus.add(chips);
+                        orders.add(chips);
                     }
 
                     if (sandwich == null && drink == null && chips == null) {
                         System.out.println("Nothing to checkout.");
                     }
-                    order2.display();
 
-                    System.out.println("\n1- Confirm\n 2- Delete");
+                    Order order = new Order();
+                    order.addMenu(orders);
+                    order.display();
+                    menus.add(order);
+
+                    System.out.println("\n1- Confirm\n2- Delete");
                     String confirm = scanner.nextLine();
                     if (confirm.trim().equals("1")){
-                        ReceiptManagement.writingReceipt(menus);
+                        ReceiptManagement.writingReceipt(orders);
+                    }
+
+                    System.out.println("Order completed.\nDo you want to add another order?\n1- Yes\n2- No");
+                    String more = scanner.nextLine();
+                    if (!more.trim().equals("1")) {
+                        input = false;
                     }
                     break;
 
-                    case "5":
+
+                case "5":
                     input = true;
+                    break;
                 default:
                     System.out.println("Invalid input please try again.");
                     break;
             }
         }
     }
-    public static Sandwich sandwich() {
+    public static List<Menu> sandwich() {
         String sandwichBread = """
                 Select your bread:
                 1- White
@@ -187,7 +197,10 @@ public class UserInterface {
         toppings.addAll(cheeses);
         toppings.addAll(regulars);
 
-        return new Sandwich(size, bread, toppings, sauce, isToasted);
+        List<Menu> sandwiches = new ArrayList<>();
+
+        sandwiches.add(new Sandwich(size, bread, toppings, sauce, isToasted));
+        return sandwiches;
     }
 
     public static Drink drink(){
