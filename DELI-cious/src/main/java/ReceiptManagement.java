@@ -32,8 +32,8 @@ public class ReceiptManagement {
                         fileWriter.write(chips.getName());
                         price+= chips.getPrice();
                     }
-                    orderNumber++;
                 }
+                orderNumber++;
             }
             fileWriter.write(String.format("\n%-30s %.2f ","Total price: " , price));
         } catch (Exception e) {
