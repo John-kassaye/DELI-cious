@@ -82,24 +82,34 @@ public class UserInterface {
                 case "4":
                     System.out.println("***** Checkout *****");
 
+                    List<Menu> menus = new ArrayList<>();
                     Order order2 = new Order();
 
                     if (sandwich != null) {
                         order2.addMenu(sandwich);
+                        menus.add(sandwich);
                     }
 
                     if (drink != null) {
                         order2.addMenu(drink);
+                        menus.add(drink);
                     }
 
                     if (chips != null){
                         order2.addMenu(chips);
+                        menus.add(chips);
                     }
 
                     if (sandwich == null && drink == null && chips == null) {
                         System.out.println("Nothing to checkout.");
                     }
                     order2.display();
+
+                    System.out.println("1- Confirm\n 2- Delete");
+                    String confirm = scanner.nextLine();
+                    if (confirm.trim().equals("1")){
+                        ReceiptManagement.writingReceipt(menus);
+                    }
                     break;
 
                     case "5":
