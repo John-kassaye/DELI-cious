@@ -7,31 +7,6 @@ public class UserInterface {
     public static void main(String[] args) {
         homeScreen();
 
-        Topping premiumTopping = new PremiumTopping("Steak",true,8);
-        Topping premiumTopping2 = new PremiumTopping("American",false,8);
-        Topping premiumTopping3 = new PremiumTopping("Ham",false,8);
-        Topping regularTopping = new RegularTopping("Steak",true);
-
-        List<Topping> toppings= new ArrayList<>();
-        toppings.add(premiumTopping);
-        toppings.add(premiumTopping2);
-        toppings.add(premiumTopping3);
-        toppings.add(regularTopping);
-
-        Menu menu =  new Sandwich(8,"Wheat",toppings,"Au jus",false);
-        Menu menu1 = new Drink(4,"Lemonade");
-        Menu menu3 = new Drink(8,"Lemonade");
-
-        List<Menu> orderList = new ArrayList<>();
-
-
-        Order order = new Order();
-        order.addMenu(menu);
-        order.addMenu(menu1);
-        order.addMenu(menu3);
-
-//        order.display();
-
     }
 
     public static void homeScreen(){
@@ -105,7 +80,7 @@ public class UserInterface {
                     }
                     order2.display();
 
-                    System.out.println("1- Confirm\n 2- Delete");
+                    System.out.println("\n1- Confirm\n 2- Delete");
                     String confirm = scanner.nextLine();
                     if (confirm.trim().equals("1")){
                         ReceiptManagement.writingReceipt(menus);

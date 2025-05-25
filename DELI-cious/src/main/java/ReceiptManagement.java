@@ -10,10 +10,13 @@ public class ReceiptManagement {
         String date = String.valueOf(localDateTime);
 
         try( FileWriter fileWriter = new FileWriter(date) ) {
-            Order order = new Order();
+            double price = 0;
             for (Menu menu1 : menu){
                 fileWriter.write(menu1.getName());
+                price+= menu1.getPrice();
             }
+
+            fileWriter.write(String.format("\n%-30s %.2f ","Total price: " , price));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
