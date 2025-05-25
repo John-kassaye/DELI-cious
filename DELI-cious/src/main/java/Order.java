@@ -5,14 +5,8 @@ public class Order {
     List<Menu> menus = new ArrayList<>();
 
     public void addMenu(List<Menu> menu) {
-            if (menu != null) {
-                menus.addAll(menu);
-            }
-    }
-
-    public void removeMenu(List<Menu> menus){
-        if (menus != null){
-            menus.clear();
+        if (menu != null) {
+            this.menus.addAll(menu);
         }
     }
 

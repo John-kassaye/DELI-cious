@@ -89,7 +89,7 @@ public class UserInterface {
                         int orderNumber = 1;
                         for (Order o : menus){
                             System.out.println("****** Order " + orderNumber + "*****");
-                            order.display();
+                            o.display();
                             System.out.println();
                             orderNumber++;
                         }
