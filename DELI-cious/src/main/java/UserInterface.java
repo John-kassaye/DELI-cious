@@ -30,9 +30,9 @@ public class UserInterface {
 
         List<Order> menus = new ArrayList<>();
 
-        Menu sandwich= null;
-        Menu drink = null;
-        Menu chips = null;
+        List<Menu> sandwich= null;
+        List<Menu> drink = null;
+        List<Menu> chips = null;
 
         boolean input = false;
 
@@ -59,18 +59,17 @@ public class UserInterface {
                     chips = chips();
                     break;
                 case "4":
-                    System.out.println("***** Checkout *****");
 
                     if (sandwich != null) {
-                        orders.add(sandwich);
+                        orders.addAll(sandwich);
                     }
 
                     if (drink != null) {
-                        orders.add(drink);
+                        orders.addAll(drink);
                     }
 
-                    if (chips != null){
-                        orders.add(chips);
+                    if (chips != null) {
+                        orders.addAll(chips);
                     }
 
                     if (sandwich == null && drink == null && chips == null) {
@@ -79,19 +78,35 @@ public class UserInterface {
 
                     Order order = new Order();
                     order.addMenu(orders);
-                    order.display();
                     menus.add(order);
 
-                    System.out.println("\n1- Confirm\n2- Delete");
-                    String confirm = scanner.nextLine();
-                    if (confirm.trim().equals("1")){
-                        ReceiptManagement.writingReceipt(orders);
-                    }
-
-                    System.out.println("Order completed.\nDo you want to add another order?\n1- Yes\n2- No");
+                    System.out.println("Do you want to add another order?\n1- Yes\n2- No");
                     String more = scanner.nextLine();
+
                     if (!more.trim().equals("1")) {
-                        input = false;
+                        System.out.println("***** Checkout *****");
+
+                        int orderNumber = 1;
+                        for (Order o : menus){
+                            System.out.println("****** Order " + orderNumber + "*****");
+                            order.display();
+                            System.out.println();
+                            orderNumber++;
+                        }
+
+                        System.out.println("\n1- Confirm\n2- Delete");
+                        String confirm = scanner.nextLine();
+                        if (confirm.trim().equals("1")) {
+                            List<Menu> allMenus = new ArrayList<>();
+
+                            for (Order o : menus){
+                                allMenus.addAll(o.getMenus());
+                            }
+                            ReceiptManagement.writingReceipt(orders);
+                            input = false;
+                        } else {
+                            menus.clear();
+                        }
                     }
                     break;
 
@@ -105,7 +120,7 @@ public class UserInterface {
             }
         }
     }
-    public static Menu sandwich() {
+    public static List<Menu> sandwich() {
         String sandwichBread = """
                 Select your bread:
                 1- White
@@ -197,11 +212,13 @@ public class UserInterface {
         toppings.addAll(cheeses);
         toppings.addAll(regulars);
 
-        return new Sandwich(size, bread, toppings, sauce, isToasted);
+        List<Menu> menus = new ArrayList<>();
+        menus.add(new Sandwich(size, bread, toppings, sauce, isToasted));
 
+        return menus;
     }
 
-    public static Drink drink(){
+    public static List<Menu> drink(){
         String drinkSize = """
                
                 Select drink size:
@@ -232,10 +249,13 @@ public class UserInterface {
         if (flavorChoice.trim().equals("1")){
             flavor = "Lemonade";
         }
-        return new Drink(size,flavor);
+
+        List<Menu> drinks = new ArrayList<>();
+        drinks.add(new Drink(size,flavor));
+        return drinks;
     }
 
-    public static Chips chips(){
+    public static List<Menu> chips(){
         String chips = """
                 
                 select chips type
@@ -246,8 +266,9 @@ public class UserInterface {
                 """;
         System.out.println(chips);
         String type = scanner.nextLine();
-
-        return new Chips(type);
+        List<Menu> chipses = new ArrayList<>();
+        chipses.add(new Chips(type));
+        return chipses;
     }
 
     public static void meatTopping() {

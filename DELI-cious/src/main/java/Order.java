@@ -10,6 +10,16 @@ public class Order {
             }
     }
 
+    public void removeMenu(List<Menu> menus){
+        if (menus != null){
+            menus.clear();
+        }
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
     public double calculateTotal() {
         double price = 0;
         for (Menu menu : menus) {
