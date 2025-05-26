@@ -12,8 +12,9 @@ public class ReceiptManagement {
         LocalDateTime localDateTime =  LocalDateTime.now();
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss ");
         String date = localDateTime.format(timeFormatter);
+        String path = "/Users/yohannesmulugeta/Desktop/plural sight/LearnToCode_Capstones/DELI-cious/DELI-cious/src/Receipts";
 
-        try( FileWriter fileWriter = new FileWriter(date + ".txt") ) {
+        try( FileWriter fileWriter = new FileWriter(path + "/" + date + ".txt") ) {
             double price = 0;
             
             for (Menu menu1 : menu) {

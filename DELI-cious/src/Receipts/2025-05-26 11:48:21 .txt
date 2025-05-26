@@ -1,0 +1,11 @@
+
+Sandwich
+Size:                         4
+Bread:                        White
+Premium Topping:              Steak
+Sauce                         Vinaigrette
+Toasted                       Yes
+Drink
+Size:                         4
+Flavor:                       Lemonade
+Total price:                   9.00 
