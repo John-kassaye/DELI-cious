@@ -15,25 +15,23 @@ public class ReceiptManagement {
 
         try( FileWriter fileWriter = new FileWriter(date + ".txt") ) {
             double price = 0;
-            int orderNumber = 1;
+            
             for (Menu menu1 : menu) {
                 if (menu1 != null) {
-                    fileWriter.write("order #" + orderNumber);
                     if (menu1 instanceof Sandwich sandwich){
-                        fileWriter.write("Sandwich");
+                        fileWriter.write("\nSandwich");
                         fileWriter.write(menu1.getName());
                         price += sandwich.getPrice();
                     } else if (menu1 instanceof Drink drink) {
-                        fileWriter.write("Drink");
+                        fileWriter.write("\nDrink");
                         fileWriter.write(drink.getName());
                         price+= drink.getPrice();
                     } else if (menu instanceof Chips chips) {
-                        fileWriter.write("Chips");
+                        fileWriter.write("\nChips");
                         fileWriter.write(chips.getName());
                         price+= chips.getPrice();
                     }
                 }
-                orderNumber++;
             }
             fileWriter.write(String.format("\n%-30s %.2f ","Total price: " , price));
         } catch (Exception e) {
