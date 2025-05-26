@@ -136,6 +136,8 @@ public class UserInterface {
        String originalRegular = "1";
        String originalSauce = "4";
 
+       boolean isMeat = false;
+
        String blt = """
                 
                 o 8" white bread
@@ -183,11 +185,8 @@ public class UserInterface {
                         String isExtraMeat = scanner.nextLine();
                         boolean extraMeat = isExtraMeat.trim().equals("1") ? true : false;
 
-                        if (meat != null){
-                            meats.add(new PremiumTopping(meat,extraMeat,size));}
-                        else {
-                            meats.add(new PremiumTopping(originalMeat,extraMeat,size));
-                        }
+                        meats.add(new PremiumTopping(meat,extraMeat,size));
+                        isMeat = true;
                         break;
                     case "2":
                         cheeseTopping();
@@ -225,12 +224,23 @@ public class UserInterface {
                     default:
                         System.out.println("Invalid input");
                 }
+
+
+                // this should be outside the loop to prevent duplicate
+//                if (!isMeat){
+//                    meats.add(new PremiumTopping(originalMeat,true,size));
+//                }
             }
+
+            if (!isMeat){
+                    meats.add(new PremiumTopping(originalMeat,true,size));
+                }
 
             System.out.println(" \n" +
                     "\uD83D\uDD25 Is toasted");
             String toasted = scanner.nextLine();
             boolean isToasted = toasted.trim().equals("1") ? true : false;
+
 
             List<Topping> toppings = new ArrayList<>();
             toppings.addAll(meats);
