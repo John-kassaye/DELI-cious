@@ -13,8 +13,8 @@ public class UserInterface {
         String homeScreen = """
                              Welcome to the DELICIOUS
                 
-                1- New Order
-                2- Exit
+                1️⃣ - New Order
+                2️⃣ - Exit
                 """;
         System.out.println(homeScreen);
         String order = scanner.nextLine();
@@ -41,11 +41,14 @@ public class UserInterface {
             List<Menu> orders = new ArrayList<>();
             String order1 = """
                 
-                1- Add Sandwich
-                2- Add Drink
-                3- Add chips
-                4- Checkout
-                5- Exit""";
+                🥪 Order Menu:
+                
+                1️⃣ - Add Sandwich
+                2️⃣ - Add Drink
+                3️⃣ - Add chips
+                4️⃣ - Checkout
+                5️⃣ - Exit
+                """;
             System.out.println(order1);
             String choice = scanner.nextLine();
             switch (choice) {
@@ -88,7 +91,7 @@ public class UserInterface {
 
                         int orderNumber = 1;
                         for (Order o : menus){
-                            System.out.println("****** Order " + orderNumber + "*****");
+                            System.out.println("\n****** Order " + orderNumber + "*****");
                             o.display();
                             System.out.println();
                             orderNumber++;
@@ -122,18 +125,24 @@ public class UserInterface {
     }
     public static List<Menu> sandwich() {
         String sandwichBread = """
-                Select your bread:
-                1- White
-                2- Wheat
-                3- Rye
-                4- Wrap""";
+                
+                🍞 Select your bread:
+                
+                1️⃣ - White
+                2️⃣ - Wheat
+                3️⃣ - Rye
+                4️⃣ - Wrap""";
         System.out.println(sandwichBread);
         String bread = scanner.nextLine();
 
         String sandwichSize = """
-                1- 4""
-                2- 8""
-                3- 12" """;
+                
+                📏 Select sandwich size:
+                
+                1️⃣ - 4""
+                2️⃣ - 8""
+                3️⃣ - 12""
+                """;
         System.out.println(sandwichSize);
         String sizeChoice = scanner.nextLine();
         int size = switch (sizeChoice) {
@@ -149,19 +158,19 @@ public class UserInterface {
         List<Topping> cheeses = new ArrayList<>();
         List<Topping> regulars = new ArrayList<>();
         String sauce = "";
-        boolean extraMeat = false;
-        boolean extraCheese = false;
-        boolean extraRegular = false;
-        boolean isToasted = false;
 
         boolean input = true;
         while (input) {
             String sandwichTopping = """
-                    1- Meat
-                    2- Cheese
-                    3- Other toppings
-                    4- Select sauces
-                    5- back""";
+                    
+                    Add Sandwich Options:
+                    
+                    1️⃣ - 🥩 Add Meats
+                    2️⃣ - 🧀 Add Cheese
+                    3️⃣ - 🥗 Add Other Toppings
+                    4️⃣ - 🧂 Add Sauces
+                    5️⃣ - back
+                    """;
 
             System.out.println(sandwichTopping);
             String topping = scanner.nextLine();
@@ -172,7 +181,7 @@ public class UserInterface {
                     String meat = scanner.nextLine();
                     System.out.println("Extra?");
                     String isExtraMeat = scanner.nextLine();
-                    extraMeat = isExtraMeat.trim().equals("1") ? true : false;
+                    boolean extraMeat = isExtraMeat.trim().equals("1") ? true : false;
                     meats.add(new PremiumTopping(meat,extraMeat,size));
                     break;
                 case "2":
@@ -180,7 +189,7 @@ public class UserInterface {
                     String cheese = scanner.nextLine();
                     System.out.println("Extra?\n1-yes\n2-no");
                     String isExtraCheese = scanner.nextLine();
-                    extraCheese = isExtraCheese.trim().equals("1") ? true : false;
+                    boolean extraCheese = isExtraCheese.trim().equals("1") ? true : false;
                     cheeses.add(new PremiumTopping(cheese,extraCheese,size));
                     break;
                 case "3":
@@ -188,7 +197,7 @@ public class UserInterface {
                     String regular = scanner.nextLine();
                     System.out.println("Extra?\n1: yes\n2: no");
                     String isExtraRegular = scanner.nextLine();
-                    extraRegular = isExtraRegular.trim().equals("1") ? true : false;
+                    boolean extraRegular = isExtraRegular.trim().equals("1") ? true : false;
                     regulars.add(new RegularTopping(regular,extraRegular));
                     break;
                 case "4":
@@ -203,9 +212,10 @@ public class UserInterface {
             }
         }
 
-        System.out.println("Is toasted");
+        System.out.println(" \n" +
+                "\uD83D\uDD25 Is toasted");
         String toasted = scanner.nextLine();
-        isToasted = toasted.trim().equals("1") ? true : false;
+        boolean isToasted = toasted.trim().equals("1") ? true : false;
 
         List<Topping> toppings = new ArrayList<>();
         toppings.addAll(meats);
@@ -221,11 +231,11 @@ public class UserInterface {
     public static List<Menu> drink(){
         String drinkSize = """
                
-                Select drink size:
+                 🥤 Select drink size:
                
-                1- Small
-                2- Medium
-                3- Large""";
+                1️⃣ - Small
+                2️⃣ - Medium
+                3️⃣ - Large""";
         System.out.println(drinkSize);
         String sizeChoice = scanner.nextLine();
         int size = 12;
@@ -237,10 +247,10 @@ public class UserInterface {
 
         String drinkFlavor = """
                 
-                Select flavor
+                🥤 Select flavor:
                 
-                1- Lemonade
-                2- Coca
+                1️⃣ - Lemonade
+                2️⃣ - Coca
                 """;
         System.out.println(drinkFlavor);
         String flavorChoice = scanner.nextLine();
@@ -258,11 +268,11 @@ public class UserInterface {
     public static List<Menu> chips(){
         String chips = """
                 
-                select chips type
+                🍟 select chips type:
                 
-                1- Potato Chips
-                2- Tortilla Chips
-                3- Pita Chips
+                1️⃣ - Potato Chips
+                2️⃣ - Tortilla Chips
+                3️⃣ - Pita Chips
                 """;
         System.out.println(chips);
         String type = scanner.nextLine();
@@ -272,58 +282,59 @@ public class UserInterface {
     }
 
     public static void meatTopping() {
-            String topping = """
-                   
-                    Meats
-                   
-                    1- steak
-                    2- ham
-                    3- salami
-                    4- roast beef -
-                    5-chicken
-                    6- bacon""";
-            System.out.println(topping);
+
+        String topping = """
+                
+                🥩 Meats:
+                
+                1️⃣ - steak
+                2️⃣ - ham
+                3️⃣ - salami
+                4️⃣ - roast beef -
+                5️⃣ -chicken
+                6️⃣ - bacon""";
+        System.out.println(topping);
     }
     public static void cheeseTopping(){
         String cheese = """
                
-                Cheese
+                🧀 Cheeses:
                 
-                7- american
-                8- provolone
-                9- cheddar
-                10- swiss""";
+                7️⃣ - american
+                8️⃣ - provolone
+                9️⃣ - cheddar
+                🔟 - swiss""";
         System.out.println(cheese);
     }
 
     public static void regularTopping(){
         String regular = """
                 
-                Regular Toppings
+                🥬 Regular Toppings:
                 
-                1- lettuce
-                2- peppers
-                3- onions
-                4- tomatoes
-                5- jalapeños
-                6- cucumbers
-                7- pickles
-                8- guacamole
-                9-- mushrooms""";
+                1️⃣ - lettuce
+                2️⃣ - peppers
+                3️⃣ - onions
+                4️⃣ - tomatoes
+                5️⃣ - jalapeños
+                6️⃣- cucumbers
+                7️⃣ - pickles
+                8️⃣ - guacamole
+                9️⃣ - mushrooms""";
         System.out.println(regular);
     }
 
     public static void saucesTopping(){
         String sauces = """
                 
-                Sauces
+                🧂 Sauces:
                 
-                1- Mayo
-                2- Mustard
-                3- Ketchup
-                4- Ranch
-                5- Thousand Islands
-                6- Vinaigrette""";
+                1️⃣ - Mayo
+                2️⃣ - Mustard
+                3️⃣ - Ketchup
+                4️⃣ - Ranch
+                5️⃣ - Thousand Islands
+                6️⃣ - Vinaigrette""";
         System.out.println(sauces);
     }
 }
