@@ -118,6 +118,9 @@ public class UserInterface {
                 case "5":
                     input = true;
                     break;
+                case "6":
+                    customSandwich();
+                    break;
                 default:
                     System.out.println("Invalid input please try again.");
                     break;
@@ -128,10 +131,10 @@ public class UserInterface {
     public static void customSandwich(){
        String bread = "1";
        int size = 8;
-       String meat = "6";
-       String cheese = "9";
-       String regular = "1";
-       String regular2 = "4";
+       String originalMeat = "6";
+       String originalCheese = "9";
+       String originalRegular = "1";
+       String originalSauce = "4";
 
        String blt = """
                 
@@ -175,27 +178,42 @@ public class UserInterface {
                 switch (topping) {
                     case "1":
                         meatTopping();
-                        meat = scanner.nextLine();
+                        String meat = scanner.nextLine();
                         System.out.println("Extra?");
                         String isExtraMeat = scanner.nextLine();
                         boolean extraMeat = isExtraMeat.trim().equals("1") ? true : false;
-                        meats.add(new PremiumTopping(meat,extraMeat,size));
+
+                        if (meat != null){
+                            meats.add(new PremiumTopping(meat,extraMeat,size));}
+                        else {
+                            meats.add(new PremiumTopping(originalMeat,extraMeat,size));
+                        }
                         break;
                     case "2":
                         cheeseTopping();
-                        cheese = scanner.nextLine();
+                        String cheese = scanner.nextLine();
                         System.out.println("Extra?\n1-yes\n2-no");
                         String isExtraCheese = scanner.nextLine();
                         boolean extraCheese = isExtraCheese.trim().equals("1") ? true : false;
-                        cheeses.add(new PremiumTopping(cheese,extraCheese,size));
+
+                        if (cheese != null){
+                            cheeses.add(new PremiumTopping(cheese,extraCheese,size));}
+                        else {
+                            cheeses.add(new PremiumTopping(originalCheese,extraCheese,size));
+                        }
                         break;
                     case "3":
                         regularTopping();
-                        regular = scanner.nextLine();
+                        String regular = scanner.nextLine();
                         System.out.println("Extra?\n1: yes\n2: no");
                         String isExtraRegular = scanner.nextLine();
                         boolean extraRegular = isExtraRegular.trim().equals("1") ? true : false;
-                        regulars.add(new RegularTopping(regular,extraRegular));
+
+                        if (regular != null){
+                            regulars.add(new RegularTopping(regular,extraRegular));}
+                        else {
+                            regulars.add(new RegularTopping(originalRegular,extraRegular));
+                        }
                         break;
                     case "4":
                         saucesTopping();
@@ -220,6 +238,15 @@ public class UserInterface {
             toppings.addAll(regulars);
 
             List<Menu> menuList = new ArrayList<>();
+            if (sauce != null){
+                menuList.add(new Sandwich(size,bread,toppings,sauce,isToasted));}
+            else {
+                menuList.add(new Sandwich(size,bread,toppings,originalSauce,isToasted));
+            }
+
+            for (Menu menu : menuList){
+                System.out.println(menu.getName());
+            }
         }
     }
 
