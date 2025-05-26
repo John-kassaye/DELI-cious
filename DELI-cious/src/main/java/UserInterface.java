@@ -139,9 +139,9 @@ public class UserInterface {
                 
                 📏 Select sandwich size:
                 
-                1️⃣ - 4""
-                2️⃣ - 8""
-                3️⃣ - 12""
+                1️⃣ - 4"
+                2️⃣ - 8"
+                3️⃣ - 12"
                 """;
         System.out.println(sandwichSize);
         String sizeChoice = scanner.nextLine();
