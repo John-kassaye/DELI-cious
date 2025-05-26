@@ -47,6 +47,7 @@ public class UserInterface {
                 2️⃣ - Add Drink
                 3️⃣ - Add chips
                 4️⃣ - Checkout
+                5 - Custom Sandwich
                 5️⃣ - Exit
                 """;
             System.out.println(order1);
@@ -123,6 +124,105 @@ public class UserInterface {
             }
         }
     }
+
+    public static void customSandwich(){
+       String bread = "1";
+       int size = 8;
+       String meat = "6";
+       String cheese = "9";
+       String regular = "1";
+       String regular2 = "4";
+
+       String blt = """
+                
+                o 8" white bread
+                o Bacon
+                o Cheddar
+                o Lettuce
+                o Tomato
+                o Ranch
+                o Toasted
+                """;
+        System.out.println(blt);
+        System.out.println("""
+                1 - Confirm
+                2 - Customize the toppings
+                """);
+        String choice = scanner.nextLine();
+        if (choice.trim().equals("2")){
+
+            List<Topping> meats = new ArrayList<>();
+            List<Topping> cheeses = new ArrayList<>();
+            List<Topping> regulars = new ArrayList<>();
+            String sauce = "4";
+
+            boolean input = true;
+            while (input) {
+                String sandwichTopping = """
+                    
+                    Add Sandwich Options:
+                    
+                    1️⃣ - 🥩 Add Meats
+                    2️⃣ - 🧀 Add Cheese
+                    3️⃣ - 🥗 Add Other Toppings
+                    4️⃣ - 🧂 Add Sauces
+                    5️⃣ - 🔙 back
+                    """;
+
+                System.out.println(sandwichTopping);
+                String topping = scanner.nextLine();
+
+                switch (topping) {
+                    case "1":
+                        meatTopping();
+                        meat = scanner.nextLine();
+                        System.out.println("Extra?");
+                        String isExtraMeat = scanner.nextLine();
+                        boolean extraMeat = isExtraMeat.trim().equals("1") ? true : false;
+                        meats.add(new PremiumTopping(meat,extraMeat,size));
+                        break;
+                    case "2":
+                        cheeseTopping();
+                        cheese = scanner.nextLine();
+                        System.out.println("Extra?\n1-yes\n2-no");
+                        String isExtraCheese = scanner.nextLine();
+                        boolean extraCheese = isExtraCheese.trim().equals("1") ? true : false;
+                        cheeses.add(new PremiumTopping(cheese,extraCheese,size));
+                        break;
+                    case "3":
+                        regularTopping();
+                        regular = scanner.nextLine();
+                        System.out.println("Extra?\n1: yes\n2: no");
+                        String isExtraRegular = scanner.nextLine();
+                        boolean extraRegular = isExtraRegular.trim().equals("1") ? true : false;
+                        regulars.add(new RegularTopping(regular,extraRegular));
+                        break;
+                    case "4":
+                        saucesTopping();
+                        sauce = scanner.nextLine();
+                        break;
+                    case "5":
+                        input = false;
+                        break;
+                    default:
+                        System.out.println("Invalid input");
+                }
+            }
+
+            System.out.println(" \n" +
+                    "\uD83D\uDD25 Is toasted");
+            String toasted = scanner.nextLine();
+            boolean isToasted = toasted.trim().equals("1") ? true : false;
+
+            List<Topping> toppings = new ArrayList<>();
+            toppings.addAll(meats);
+            toppings.addAll(cheeses);
+            toppings.addAll(regulars);
+
+            List<Menu> menuList = new ArrayList<>();
+        }
+    }
+
     public static List<Menu> sandwich() {
         String sandwichBread = """
                 
