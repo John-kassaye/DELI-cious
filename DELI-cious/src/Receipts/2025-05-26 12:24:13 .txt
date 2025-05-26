@@ -1,0 +1,21 @@
+
+Sandwich
+Size:                         4
+Bread:                        White
+Premium Topping:              Steak
+Sauce                         Vinaigrette
+Toasted                       Yes
+Drink
+Size:                         8
+Flavor:                       Coca
+Sandwich
+Size:                         8
+Bread:                        Wheat
+Premium Topping:              American
+Regular topping               Roast Beef
+Sauce                         Vinaigrette
+Toasted                       Yes
+Drink
+Size:                         8
+Flavor:                       Lemonade
+Total price:                   21.10 

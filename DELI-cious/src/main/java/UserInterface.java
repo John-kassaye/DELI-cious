@@ -87,11 +87,11 @@ public class UserInterface {
                     String more = scanner.nextLine();
 
                     if (!more.trim().equals("1")) {
-                        System.out.println("***** Checkout *****");
+                        System.out.println("\n***** Checkout *****");
 
                         int orderNumber = 1;
                         for (Order o : menus){
-                            System.out.println("\n****** Order " + orderNumber + "*****");
+                            System.out.println("\n****** Order " + orderNumber + "*****\n");
                             o.display();
                             System.out.println();
                             orderNumber++;
@@ -169,7 +169,7 @@ public class UserInterface {
                     2️⃣ - 🧀 Add Cheese
                     3️⃣ - 🥗 Add Other Toppings
                     4️⃣ - 🧂 Add Sauces
-                    5️⃣ - back
+                    5️⃣ - 🔙 back
                     """;
 
             System.out.println(sandwichTopping);
@@ -290,8 +290,8 @@ public class UserInterface {
                 1️⃣ - steak
                 2️⃣ - ham
                 3️⃣ - salami
-                4️⃣ - roast beef -
-                5️⃣ -chicken
+                4️⃣ - roast beef
+                5️⃣ - chicken
                 6️⃣ - bacon""";
         System.out.println(topping);
     }
@@ -317,7 +317,7 @@ public class UserInterface {
                 3️⃣ - onions
                 4️⃣ - tomatoes
                 5️⃣ - jalapeños
-                6️⃣- cucumbers
+                6️⃣ - cucumbers
                 7️⃣ - pickles
                 8️⃣ - guacamole
                 9️⃣ - mushrooms""";
