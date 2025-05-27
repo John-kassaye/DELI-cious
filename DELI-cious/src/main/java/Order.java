@@ -44,6 +44,6 @@ public class Order {
             }
         }
         System.out.println("---------------------------------");
-        System.out.printf("%-30s $%.2f", "\nHere is your Total: ", calculateTotal());
+        System.out.printf("%-30s $%.2f", "\nHere is your price: ", calculateTotal());
     }
 }

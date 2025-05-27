@@ -107,6 +107,7 @@ public class UserInterface {
 
                         int orderNumber = 1;
                         double totalPrice = 0;
+
                         for (Order o : menus){
                             System.out.println("\n****** Order " + orderNumber + "*****\n");
                             o.display();
@@ -114,20 +115,48 @@ public class UserInterface {
                             System.out.println();
                             orderNumber++;
                         }
-                        System.out.printf("%-30s %.2f","\nHere is your total price: " , totalPrice);
+                        System.out.printf("%-30s $%.2f","\nHere is your total price: " , totalPrice);
 
+                    boolean isCustomer = false;
+                    if (!more.trim().equals("1")) {
+                        System.out.println("""
+                                
+                                A customer will get a 10% discount! 🎉 Are you a customer?
+                                
+                                1️⃣ - Yes, I am! Please give me my discount. 💸
+                                2️⃣ - No, I’m not, but I want to become a customer. 🤝
+                                3️⃣ - Thanks, I’ll pass. 🙏
+                                """);
+                        String customer = scanner.nextLine();
+
+                        if (customer.trim().equals("1")){
+                            isCustomer = LoginManagement.signInCheck();
+                            if (isCustomer){
+                                totalPrice= totalPrice - (totalPrice * 0.1) ;
+                                System.out.printf("%-30s %.2f","\nHere is your price after discount: " , totalPrice);
+                            }
+                        } else if (customer.trim().equals("2")) {
+                            LoginManagement.signUp();
+
+                            isCustomer = LoginManagement.signInCheck();
+                            if (isCustomer){
+                                totalPrice= totalPrice - (totalPrice * 0.1) ;
+                                System.out.printf("%-30s %.2f","\nHere is your price after discount: " , totalPrice);
+                            }
+                            }
                         System.out.println("\n1- Confirm\n2- Delete");
                         String confirm = scanner.nextLine();
                         if (confirm.trim().equals("1")) {
                             List<Menu> allMenus = new ArrayList<>();
 
-                            for (Order o : menus){
+                            for (Order o : menus) {
                                 allMenus.addAll(o.getMenus());
                             }
                             ReceiptManagement.writingReceipt(menus);
                             System.out.println("Order confirmation");
                             input = false;
-                        } else {
+                        }
+                    } else {
                             menus.clear();
                             orders.clear();
                         }
