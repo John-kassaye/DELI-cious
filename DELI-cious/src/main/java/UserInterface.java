@@ -272,45 +272,42 @@ public class UserInterface {
                 String topping = scanner.nextLine();
 
                 switch (topping) {
-                    case "1":
+                    case "1" -> {
                         meatTopping();
                         String meat = scanner.nextLine();
                         System.out.println("Extra?");
                         String isExtraMeat = scanner.nextLine();
-                        boolean extraMeat = isExtraMeat.trim().equals("1") ? true : false;
+                        boolean extraMeat = isExtraMeat.trim().equals("1");
 
                         meats.add(new PremiumTopping(meat, extraMeat, size));
                         isMeat = true;
-                        break;
-                    case "2":
+                    }
+                    case "2" -> {
                         cheeseTopping();
                         String cheese = scanner.nextLine();
                         System.out.println("Extra?\n1-yes\n2-no");
                         String isExtraCheese = scanner.nextLine();
-                        boolean extraCheese = isExtraCheese.trim().equals("1") ? true : false;
+                        boolean extraCheese = isExtraCheese.trim().equals("1");
 
                         cheeses.add(new PremiumTopping(cheese, extraCheese, size));
                         isCheese = true;
-                        break;
-                    case "3":
+                    }
+                    case "3" -> {
                         regularTopping();
                         String regular = scanner.nextLine();
                         System.out.println("Extra?\n1: yes\n2: no");
                         String isExtraRegular = scanner.nextLine();
-                        boolean extraRegular = isExtraRegular.trim().equals("1") ? true : false;
+                        boolean extraRegular = isExtraRegular.trim().equals("1");
 
                         regulars.add(new RegularTopping(regular, extraRegular));
                         isRegular = true;
-                        break;
-                    case "4":
+                    }
+                    case "4" -> {
                         saucesTopping();
                         sauce = scanner.nextLine();
-                        break;
-                    case "5":
-                        input = false;
-                        break;
-                    default:
-                        System.out.println("Invalid input");
+                    }
+                    case "5" -> input = false;
+                    default -> System.out.println("Invalid input");
                 }
 
 
@@ -320,7 +317,7 @@ public class UserInterface {
 //                }
             }
 
-            // this will handle if the user select 1 or confirm
+            // this handle the case where the user doesn't customize all options.
             if (!isMeat) {
                 meats.add(new PremiumTopping(originalMeat, true, size));
             }
@@ -337,14 +334,14 @@ public class UserInterface {
             System.out.println(" \n" +
                     "\uD83D\uDD25 Is toasted");
             String toasted = scanner.nextLine();
-            boolean isToasted = toasted.trim().equals("1") ? true : false;
+            boolean isToasted = toasted.trim().equals("1");
 
             List<Topping> toppings = new ArrayList<>();
             toppings.addAll(meats);
             toppings.addAll(cheeses);
             toppings.addAll(regulars);
 
-            menuList.add(new CustomSandwich(size, bread, toppings, originalSauce, isToasted));
+            menuList.add(new CustomSandwich(size, bread, toppings, sauce, isToasted));
         } else {
             List<Topping> toppings = new ArrayList<>();
             toppings.add(new PremiumTopping(originalMeat, true, size));
@@ -386,7 +383,7 @@ public class UserInterface {
             case "3" -> 12;
             default -> {
                 System.out.println("Invalid choice. Defaulting to 4\"");
-                yield 4;
+                yield 4;     // This one is IntelliJ's suggestion.
             }
         };
         List<Topping> meats = new ArrayList<>();
@@ -416,7 +413,7 @@ public class UserInterface {
                     String meat = scanner.nextLine();
                     System.out.println("Extra?");
                     String isExtraMeat = scanner.nextLine();
-                    boolean extraMeat = isExtraMeat.trim().equals("1") ? true : false;
+                    boolean extraMeat = isExtraMeat.trim().equals("1");
                     meats.add(new PremiumTopping(meat,extraMeat,size));
                     break;
                 case "2":
@@ -424,7 +421,7 @@ public class UserInterface {
                     String cheese = scanner.nextLine();
                     System.out.println("Extra?\n1-yes\n2-no");
                     String isExtraCheese = scanner.nextLine();
-                    boolean extraCheese = isExtraCheese.trim().equals("1") ? true : false;
+                    boolean extraCheese = isExtraCheese.trim().equals("1");
                     cheeses.add(new PremiumTopping(cheese,extraCheese,size));
                     break;
                 case "3":
@@ -432,7 +429,7 @@ public class UserInterface {
                     String regular = scanner.nextLine();
                     System.out.println("Extra?\n1: yes\n2: no");
                     String isExtraRegular = scanner.nextLine();
-                    boolean extraRegular = isExtraRegular.trim().equals("1") ? true : false;
+                    boolean extraRegular = isExtraRegular.trim().equals("1");
                     regulars.add(new RegularTopping(regular,extraRegular));
                     break;
                 case "4":
@@ -453,7 +450,7 @@ public class UserInterface {
                 1 - Yes
                 2 - no""");
         String toasted = scanner.nextLine();
-        boolean isToasted = toasted.trim().equals("1") ? true : false;
+        boolean isToasted = toasted.trim().equals("1");
 
         List<Topping> toppings = new ArrayList<>();
         toppings.addAll(meats);
