@@ -76,6 +76,15 @@ public class Sandwich implements Menu {
         };
     }
 
+    public void addTopping(Topping topping) {
+        toppings.add(topping);
+    }
+
+    public void removeTopping(String toppingName) {
+        toppings.removeIf(t -> t.getName().equalsIgnoreCase(toppingName));
+    }
+
+
     @Override
     public String getName() {
         return String.format("%-30s %d", "\nSize:", getSize()) + "\"" +

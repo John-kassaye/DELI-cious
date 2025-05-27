@@ -67,10 +67,10 @@ public class UserInterface {
                     chips = chips();
                     break;
                 case "4":
-                    customSandwich = customSandwich();
+                    customSandwich = customSandwich("BLT");
                     break;
                 case "5":
-                    customSandwich2 = customSandwich2();
+                    customSandwich2 = customSandwich("PHILLY");
                     break;
                 case "6":
 
@@ -94,7 +94,7 @@ public class UserInterface {
                         orders.addAll(customSandwich2);
                     }
 
-                    if (sandwich == null && drink == null && chips == null && customSandwich == null && customSandwich2 == null) {
+                    if (orders.isEmpty()) {
                         System.out.println("Nothing to checkout.");
                     }
 
@@ -150,7 +150,7 @@ public class UserInterface {
                         if (customer.trim().equals("1")){
                             isCustomer = LoginManagement.signInCheck();
                             if (isCustomer){
-                                totalPrice= totalPrice - (totalPrice * 0.1) ;
+                                totalPrice*= 0.9 ;
                                 System.out.printf("%-30s %.2f","\nHere is your price after discount: " , totalPrice);
                             }
                         } else if (customer.trim().equals("2")) {
@@ -158,7 +158,7 @@ public class UserInterface {
 
                             isCustomer = LoginManagement.signInCheck();
                             if (isCustomer){
-                                totalPrice= totalPrice - (totalPrice * 0.1) ;
+                                totalPrice*= 0.9 ;
                                 System.out.printf("%-30s %.2f","\nHere is your price after discount: " , totalPrice);
                             }
                             }
@@ -203,189 +203,57 @@ public class UserInterface {
         }
     }
 
-    public static List<Menu> customSandwich(){
-        String bread = "1";
+    public static List<Menu> customSandwich(String type){
+
+        // i declared it here in case the user doesn't customize all of them.
+//        String bread = "1";
+//        int size = 8;
+//        String originalMeat = "6";
+//        String originalCheese = "9";
+//        String originalRegular = "1";
+//        String originalRegular2 = "4";
+//        String originalSauce = "4";
+
+        // Set defaults
         int size = 8;
-        String originalMeat = "6";
-        String originalCheese = "9";
-        String originalRegular = "1";
-        String originalRegular2 = "4";
-        String originalSauce = "4";
+        String bread = "1";
+        String originalSauce = "";
+        String originalMeat = "";
+        String originalCheese = "";
+        String originalRegular = "";
+        String originalRegular2 = "";
+
+        if (type.equals("BLT")) {
+            originalMeat = "6";       // Bacon
+            originalCheese = "9";     // Default cheese
+            originalRegular = "1";    // Lettuce
+            originalRegular2 = "4";    // Tomato
+            originalSauce = "4";      // Mayo
+        } else if (type.equals("PHILLY")) {
+            originalMeat = "8";       // Steak
+            originalCheese = "2";     // American
+            originalRegular = "3";    // Onion
+            originalSauce = "2";      // Chipotle
+        }
+
 
        boolean isMeat = false;
        boolean isCheese = false;
        boolean isRegular = false;
-       List<Menu> menuList = new ArrayList<>();
 
-
-       String blt = """
-                
-                BLT
-                
-                o 8" white bread
-                o Bacon
-                o Cheddar
-                o Lettuce
-                o Tomato
-                o Ranch
-                o Toasted
-                """;
-        System.out.println(blt);
         System.out.println("""
                 1 - Confirm
                 2 - Customize the toppings
                 """);
         String choice = scanner.nextLine();
-        if (choice.trim().equals("2")){
-
-            List<Topping> meats = new ArrayList<>();
-            List<Topping> cheeses = new ArrayList<>();
-            List<Topping> regulars = new ArrayList<>();
-            String sauce = "4";
-
-            boolean input = true;
-            while (input) {
-                String sandwichTopping = """
-                    
-                    Add Sandwich Options:
-                    
-                    1️⃣ - 🥩 Add Meats
-                    2️⃣ - 🧀 Add Cheese
-                    3️⃣ - 🥗 Add Other Toppings
-                    4️⃣ - 🧂 Add Sauces
-                    5️⃣ - 🔙 back
-                    """;
-
-                System.out.println(sandwichTopping);
-                String topping = scanner.nextLine();
-
-                switch (topping) {
-                    case "1":
-                        meatTopping();
-                        String meat = scanner.nextLine();
-                        System.out.println("Extra?");
-                        String isExtraMeat = scanner.nextLine();
-                        boolean extraMeat = isExtraMeat.trim().equals("1") ? true : false;
-
-                        meats.add(new PremiumTopping(meat,extraMeat,size));
-                        isMeat = true;
-                        break;
-                    case "2":
-                        cheeseTopping();
-                        String cheese = scanner.nextLine();
-                        System.out.println("Extra?\n1-yes\n2-no");
-                        String isExtraCheese = scanner.nextLine();
-                        boolean extraCheese = isExtraCheese.trim().equals("1") ? true : false;
-
-                        cheeses.add(new PremiumTopping(cheese,extraCheese,size));
-                        isCheese = true;
-                        break;
-                    case "3":
-                        regularTopping();
-                        String regular = scanner.nextLine();
-                        System.out.println("Extra?\n1: yes\n2: no");
-                        String isExtraRegular = scanner.nextLine();
-                        boolean extraRegular = isExtraRegular.trim().equals("1") ? true : false;
-
-                        regulars.add(new RegularTopping(regular,extraRegular));
-                        isRegular = true;
-                        break;
-                    case "4":
-                        saucesTopping();
-                        sauce = scanner.nextLine();
-                        break;
-                    case "5":
-                        input = false;
-                        break;
-                    default:
-                        System.out.println("Invalid input");
-                }
-
-
-                // this should be outside the loop to prevent duplication
-//                if (!isMeat){
-//                    meats.add(new PremiumTopping(originalMeat,true,size));
-//                }
-            }
-
-            if (!isMeat){
-                meats.add(new PremiumTopping(originalMeat,true,size));
-                }
-
-            if (!isCheese){
-                cheeses.add(new PremiumTopping(originalCheese,true,size));
-            }
-
-            if (!isRegular){
-                regulars.add(new RegularTopping(originalRegular,true));
-                regulars.add(new RegularTopping(originalRegular2,true));
-            }
-
-            System.out.println(" \n" +
-                    "\uD83D\uDD25 Is toasted");
-            String toasted = scanner.nextLine();
-            boolean isToasted = toasted.trim().equals("1") ? true : false;
-
-            List<Topping> toppings = new ArrayList<>();
-            toppings.addAll(meats);
-            toppings.addAll(cheeses);
-            toppings.addAll(regulars);
-
-            if (sauce != null){
-                menuList.add(new CustomSandwich(size,bread,toppings,sauce,isToasted));}
-            else {
-                menuList.add(new CustomSandwich(size,bread,toppings,originalSauce,isToasted));
-            }
-        } else {
-            List<Topping> toppings = new ArrayList<>();
-            toppings.add(new PremiumTopping(originalMeat,true,size));
-            toppings.add(new PremiumTopping(originalCheese,true,size));
-            toppings.add(new RegularTopping(originalRegular,true));
-            toppings.add(new RegularTopping(originalRegular2,true));
-
-            menuList.add(new CustomSandwich(size,bread,toppings,originalSauce,true));
-        }
-
-        return menuList;
-    }
-
-    public static List<Menu> customSandwich2(){
-        String bread = "1";
-        int size = 8;
-        String originalMeat = "1";
-        String originalCheese = "7";
-        String originalRegular = "2";
-        String originalSauce = "1";
-
-        boolean isMeat = false;
-        boolean isCheese = false;
-        boolean isRegular = false;
-        boolean isSauce = false;
         List<Menu> menuList = new ArrayList<>();
 
-        String philly = """
-                
-                Philly Cheese Steak
-                
-                o 8" white bread
-                o Steak
-                o American Cheese
-                o Peppers
-                o Mayo
-                o Toasted
-                """;
-        System.out.println(philly);
-        System.out.println("""
-                1 - Confirm
-                2 - Customize the toppings
-                """);
-        String choice = scanner.nextLine();
         if (choice.trim().equals("2")) {
 
             List<Topping> meats = new ArrayList<>();
             List<Topping> cheeses = new ArrayList<>();
             List<Topping> regulars = new ArrayList<>();
-            String sauce = "1";
+            String sauce = originalSauce;
 
             boolean input = true;
             while (input) {
@@ -437,7 +305,6 @@ public class UserInterface {
                     case "4":
                         saucesTopping();
                         sauce = scanner.nextLine();
-                        isSauce = true;
                         break;
                     case "5":
                         input = false;
@@ -453,6 +320,7 @@ public class UserInterface {
 //                }
             }
 
+            // this will handle if the user select 1 or confirm
             if (!isMeat) {
                 meats.add(new PremiumTopping(originalMeat, true, size));
             }
@@ -463,6 +331,7 @@ public class UserInterface {
 
             if (!isRegular) {
                 regulars.add(new RegularTopping(originalRegular, true));
+                regulars.add(new RegularTopping(originalRegular2, true));
             }
 
             System.out.println(" \n" +
@@ -475,19 +344,17 @@ public class UserInterface {
             toppings.addAll(cheeses);
             toppings.addAll(regulars);
 
-            menuList = new ArrayList<>();
-            menuList.add(new CustomSandwich(size, bread, toppings, sauce, isToasted));
-
+            menuList.add(new CustomSandwich(size, bread, toppings, originalSauce, isToasted));
         } else {
-                List<Topping> toppings = new ArrayList<>();
-                toppings.add(new PremiumTopping(originalMeat,true,size));
-                toppings.add(new PremiumTopping(originalCheese,true,size));
-                toppings.add(new RegularTopping(originalRegular,true));
+            List<Topping> toppings = new ArrayList<>();
+            toppings.add(new PremiumTopping(originalMeat, true, size));
+            toppings.add(new PremiumTopping(originalCheese, true, size));
+            toppings.add(new RegularTopping(originalRegular, true));
 
-                menuList.add(new CustomSandwich(size,bread,toppings,originalSauce,true));
-            }
+            menuList.add(new CustomSandwich(size, bread, toppings, originalSauce, true));
+        }
 
-            return menuList;
+        return menuList;
     }
 
     public static List<Menu> sandwich() {
