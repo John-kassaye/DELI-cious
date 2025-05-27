@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -108,6 +109,7 @@ public class UserInterface {
                         //Solving list duplication issues
                         // I didn't use this at first, and it was working fine until I encountered some scenarios. for instance, if I ordered a drink in order 1
                         // and didn't choose a drink in the next order, it would still show the drink in the second order as well.
+
                         sandwich = null;
                         drink = null;
                         chips = null;
@@ -122,6 +124,7 @@ public class UserInterface {
                         int orderNumber = 1;
                         double totalPrice = 0;
 
+                        Collections.reverse(menus);
                         for (Order o : menus){
                             System.out.println("\n****** Order " + orderNumber + "*****\n");
                             o.display();
@@ -167,11 +170,11 @@ public class UserInterface {
                         if (split.trim().equals("1")){
                             System.out.println("How many people");
                             people = scanner.nextInt();
+                            scanner.nextLine();
                             totalPrice/= people;
                             System.out.printf("\n%-30s $%.2f each "," Split between " + people + " people:", totalPrice);
                         }
 
-                        scanner.nextLine();
                         System.out.println("\n1- Confirm ✅\n2- Delete❌");
                         String confirm = scanner.nextLine();
                         if (confirm.trim().equals("1")) {
