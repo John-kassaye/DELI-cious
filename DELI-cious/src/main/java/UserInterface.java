@@ -101,10 +101,22 @@ public class UserInterface {
                     order.addMenu(orders);
                     menus.add(order);
 
-                    System.out.println("Do you want to add another order?\n1- Yes\n2- No");
+                    System.out.println("\n1 - Add another order\n2 - Checkout");
                     String more = scanner.nextLine();
 
-                    if (!more.trim().equals("1")) {
+                    if (more.trim().equals("1")){
+                        //Solving list duplication issues
+                        // I didn't use this at first, and it was working fine until I encountered some scenarios. for instance, if I ordered a drink in order 1
+                        // and didn't choose a drink in the next order, it would still show the drink in the second order as well.
+                        sandwich = null;
+                        drink = null;
+                        chips = null;
+                        customSandwich = null;
+                        customSandwich2 = null;
+
+                        orders = new ArrayList<>();
+                    }
+                    else if (more.trim().equals("2")) {
                         System.out.println("\n***** Checkout *****");
 
                         int orderNumber = 1;
@@ -119,7 +131,7 @@ public class UserInterface {
                         }
                         System.out.printf("%-30s $%.2f","\nHere is your total price: " , totalPrice);
 
-                    boolean isCustomer = false;
+                        boolean isCustomer = false;
                     if (!more.trim().equals("1")) {
                         System.out.println("""
                                 
@@ -148,6 +160,18 @@ public class UserInterface {
                             }
                             }
 
+                        int people = 1;
+
+                        System.out.println("Do you want to split the check?");
+                        String split = scanner.nextLine();
+                        if (split.trim().equals("1")){
+                            System.out.println("How many people");
+                            people = scanner.nextInt();
+                            totalPrice/= people;
+                            System.out.printf("\n%-30s $%.2f each "," Split between " + people + " people:", totalPrice);
+                        }
+
+                        scanner.nextLine();
                         System.out.println("\n1- Confirm ✅\n2- Delete❌");
                         String confirm = scanner.nextLine();
                         if (confirm.trim().equals("1")) {
@@ -156,7 +180,7 @@ public class UserInterface {
                             for (Order o : menus) {
                                 allMenus.addAll(o.getMenus());
                             }
-                            ReceiptManagement.writingReceipt(menus,totalPrice);
+                            ReceiptManagement.writingReceipt(menus,totalPrice,people);
                             System.out.println("🎉 Order confirmed. Thank you for your purchase!");
                             input = false;
                         }

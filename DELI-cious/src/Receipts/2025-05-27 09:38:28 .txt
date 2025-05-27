@@ -1,0 +1,33 @@
+*******DELI-cious*******
+
+--- Order #1---
+---Sandwich---
+Size:                         4"
+Bread:                        White
+Premium Topping:              Steak
+Premium Topping:              Steak
+Sauce:                        No sauce
+Toasted:                      Yes
+Total price:                   $8.50 
+
+--- Order #2---
+---Sandwich---
+Size:                         4"
+Bread:                        White
+Premium Topping:              Steak
+Premium Topping:              Steak
+Sauce:                        No sauce
+Toasted:                      Yes
+---Sandwich---
+Size:                         8"
+Bread:                        White
+Premium Topping:              Bacon
+Premium Topping:              Cheddar
+Regular topping               lettuce
+Regular topping               tomatoes
+Sauce:                        Ranch
+Toasted:                      Yes
+Total price:                   $20.60 
+----------------------------------------------
+Total price:                   $14.55 
+                               Split between 2 people:  $7.28 
