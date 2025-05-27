@@ -125,6 +125,7 @@ public class UserInterface {
                                 allMenus.addAll(o.getMenus());
                             }
                             ReceiptManagement.writingReceipt(menus);
+                            System.out.println("Order confirmation");
                             input = false;
                         } else {
                             menus.clear();
