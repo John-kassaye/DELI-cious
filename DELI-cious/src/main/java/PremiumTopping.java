@@ -6,6 +6,21 @@ public class PremiumTopping extends Topping {
         this.sandwichSize = sandwichSize;
     }
 
+    public String getName(){
+        return switch (getTopName().trim()) {
+            case "1" -> "Steak";
+            case "2" -> "Ham";
+            case "3" -> "Salami";
+            case "4" -> "Roast Beef";
+            case "5" -> "Chicken";
+            case "6" -> "Bacon";
+            case "7" -> "American";
+            case "8" -> "Provolone";
+            case "9" -> "Cheddar";
+            default -> "Swiss";
+        };
+    }
+
     public int getSandwichSize() {
         return sandwichSize;
     }
