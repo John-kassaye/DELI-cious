@@ -1,0 +1,12 @@
+*******DELI-cious*******
+
+--- Order #1---
+---Sandwich---
+Size:                         4"
+Bread:                        White
+Regular topping               peppers
+Sauce:                        No sauce
+Toasted:                      Yes
+Total price:                   $5.50 
+----------------------------------------------
+Total price:                   $5.50 

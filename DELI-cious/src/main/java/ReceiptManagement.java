@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ReceiptManagement {
 
-    public static void writingReceipt(List<Order> orders){
+    public static void writingReceipt(List<Order> orders, double finalPrice){
 
         LocalDateTime localDateTime =  LocalDateTime.now();
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss ");
@@ -19,7 +19,6 @@ public class ReceiptManagement {
         try( FileWriter fileWriter = new FileWriter(path + "/" + fileName) ) {
             fileWriter.write("*******DELI-cious*******");
 
-            double totalPrice = 0;
             int orderNumber = 1;
 
             for (Order order : orders) {
@@ -42,11 +41,11 @@ public class ReceiptManagement {
                     }
                 }
                 fileWriter.write(String.format("\n%-30s $%.2f ","Total price: " , orderPrice));
-                totalPrice+= orderPrice;
+
             }
             fileWriter.write("\n----------------------------------------------");
-            fileWriter.write(String.format("\n%-30s $%.2f ","Total price: " , totalPrice));
-            System.out.println("Receipt written to file.");
+            fileWriter.write(String.format("\n%-30s $%.2f ","Total price: " , finalPrice));
+            System.out.println("\n \uD83E\uDDFE Your receipt has been written to the file successfully.");
 
         } catch (Exception e) {
             throw new RuntimeException(e);

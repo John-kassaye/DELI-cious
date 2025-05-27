@@ -14,7 +14,8 @@ public class UserInterface {
                              Welcome to the DELICIOUS
                 
                 1️⃣ - New Order
-                2️⃣ - Exit""";
+                2️⃣ - Exit
+                """;
         System.out.println(homeScreen);
         String order = scanner.nextLine();
 
@@ -50,7 +51,8 @@ public class UserInterface {
                 4️⃣ - Custom sandwich BLT
                 5️⃣ - Custom Sandwich Philly Cheese Steak
                 6️⃣ - Checkout
-                7️⃣ - Exit""";
+                7️⃣ - Exit
+                """;
             System.out.println(order1);
             String choice = scanner.nextLine();
             switch (choice) {
@@ -121,6 +123,7 @@ public class UserInterface {
                     if (!more.trim().equals("1")) {
                         System.out.println("""
                                 
+                               
                                 A customer will get a 10% discount! 🎉 Are you a customer?
                                 
                                 1️⃣ - Yes, I am! Please give me my discount. 💸
@@ -144,7 +147,8 @@ public class UserInterface {
                                 System.out.printf("%-30s %.2f","\nHere is your price after discount: " , totalPrice);
                             }
                             }
-                        System.out.println("\n1- Confirm\n2- Delete");
+
+                        System.out.println("\n1- Confirm ✅\n2- Delete❌");
                         String confirm = scanner.nextLine();
                         if (confirm.trim().equals("1")) {
                             List<Menu> allMenus = new ArrayList<>();
@@ -152,8 +156,8 @@ public class UserInterface {
                             for (Order o : menus) {
                                 allMenus.addAll(o.getMenus());
                             }
-                            ReceiptManagement.writingReceipt(menus);
-                            System.out.println("Order confirmation");
+                            ReceiptManagement.writingReceipt(menus,totalPrice);
+                            System.out.println("🎉 Order confirmed. Thank you for your purchase!");
                             input = false;
                         }
                     } else {
@@ -467,7 +471,8 @@ public class UserInterface {
                 1️⃣ - White
                 2️⃣ - Wheat
                 3️⃣ - Rye
-                4️⃣ - Wrap""";
+                4️⃣ - Wrap
+                """;
         System.out.println(sandwichBread);
         String bread = scanner.nextLine();
 
@@ -574,7 +579,8 @@ public class UserInterface {
                
                 1️⃣ - Small
                 2️⃣ - Medium
-                3️⃣ - Large""";
+                3️⃣ - Large
+                """;
         System.out.println(drinkSize);
         String sizeChoice = scanner.nextLine();
         int size = 12;
@@ -631,7 +637,8 @@ public class UserInterface {
                 3️⃣ - salami
                 4️⃣ - roast beef
                 5️⃣ - chicken
-                6️⃣ - bacon""";
+                6️⃣ - bacon
+                """;
         System.out.println(topping);
     }
     public static void cheeseTopping(){
@@ -642,7 +649,8 @@ public class UserInterface {
                 7️⃣ - american
                 8️⃣ - provolone
                 9️⃣ - cheddar
-                🔟 - swiss""";
+                🔟 - swiss
+                """;
         System.out.println(cheese);
     }
 
@@ -659,7 +667,8 @@ public class UserInterface {
                 6️⃣ - cucumbers
                 7️⃣ - pickles
                 8️⃣ - guacamole
-                9️⃣ - mushrooms""";
+                9️⃣ - mushrooms
+                """;
         System.out.println(regular);
     }
 
@@ -673,7 +682,8 @@ public class UserInterface {
                 3️⃣ - Ketchup
                 4️⃣ - Ranch
                 5️⃣ - Thousand Islands
-                6️⃣ - Vinaigrette""";
+                6️⃣ - Vinaigrette
+                """;
         System.out.println(sauces);
     }
 }
