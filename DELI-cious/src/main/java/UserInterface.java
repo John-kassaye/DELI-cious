@@ -134,9 +134,12 @@ public class UserInterface {
        String originalMeat = "6";
        String originalCheese = "9";
        String originalRegular = "1";
+       String originalRegular2 = "4";
        String originalSauce = "4";
 
        boolean isMeat = false;
+       boolean isCheese = false;
+       boolean isRegular = false;
 
        String blt = """
                 
@@ -195,11 +198,8 @@ public class UserInterface {
                         String isExtraCheese = scanner.nextLine();
                         boolean extraCheese = isExtraCheese.trim().equals("1") ? true : false;
 
-                        if (cheese != null){
-                            cheeses.add(new PremiumTopping(cheese,extraCheese,size));}
-                        else {
-                            cheeses.add(new PremiumTopping(originalCheese,extraCheese,size));
-                        }
+                        cheeses.add(new PremiumTopping(cheese,extraCheese,size));
+                        isCheese = true;
                         break;
                     case "3":
                         regularTopping();
@@ -208,11 +208,8 @@ public class UserInterface {
                         String isExtraRegular = scanner.nextLine();
                         boolean extraRegular = isExtraRegular.trim().equals("1") ? true : false;
 
-                        if (regular != null){
-                            regulars.add(new RegularTopping(regular,extraRegular));}
-                        else {
-                            regulars.add(new RegularTopping(originalRegular,extraRegular));
-                        }
+                        regulars.add(new RegularTopping(regular,extraRegular));
+                        isRegular = true;
                         break;
                     case "4":
                         saucesTopping();
@@ -226,21 +223,29 @@ public class UserInterface {
                 }
 
 
-                // this should be outside the loop to prevent duplicate
+                // this should be outside the loop to prevent duplication
 //                if (!isMeat){
 //                    meats.add(new PremiumTopping(originalMeat,true,size));
 //                }
             }
 
             if (!isMeat){
-                    meats.add(new PremiumTopping(originalMeat,true,size));
+                meats.add(new PremiumTopping(originalMeat,true,size));
                 }
+
+            if (!isCheese){
+                cheeses.add(new PremiumTopping(originalCheese,true,size));
+            }
+
+            if (!isRegular){
+                regulars.add(new RegularTopping(originalRegular,true));
+                regulars.add(new RegularTopping(originalRegular2,true));
+            }
 
             System.out.println(" \n" +
                     "\uD83D\uDD25 Is toasted");
             String toasted = scanner.nextLine();
             boolean isToasted = toasted.trim().equals("1") ? true : false;
-
 
             List<Topping> toppings = new ArrayList<>();
             toppings.addAll(meats);
