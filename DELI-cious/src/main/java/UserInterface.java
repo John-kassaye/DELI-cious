@@ -179,10 +179,10 @@ public class UserInterface {
                         String confirm = scanner.nextLine();
                         if (confirm.trim().equals("1")) {
                             List<Menu> allMenus = new ArrayList<>();
-
-                            for (Order o : menus) {
+                            menus.forEach( o -> {
                                 allMenus.addAll(o.getMenus());
-                            }
+                            });
+
                             ReceiptManagement.writingReceipt(menus,totalPrice,people);
                             System.out.println("🎉 Order confirmed. Thank you for your purchase!");
                             input = false;

@@ -29,7 +29,7 @@ public class Order {
             return;
         }
 
-        for (Menu menu : menus) {
+        menus.forEach(menu -> {
             if (menu != null) {
                 if (menu instanceof Sandwich sandwich) {
                     System.out.println("-----Sandwich-----");
@@ -42,7 +42,8 @@ public class Order {
                     System.out.println(chips.getName());
                 }
             }
-        }
+        });
+
         System.out.println("---------------------------------");
         System.out.printf("%-30s $%.2f", "\nHere is your price: ", calculateTotal());
     }

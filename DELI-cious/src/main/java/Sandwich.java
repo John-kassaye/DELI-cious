@@ -57,9 +57,9 @@ public class Sandwich implements Menu {
     public String toppingToString() {
         StringBuilder format = new StringBuilder();
 
-        for (Topping topping : toppings) {
+        toppings.forEach(topping -> {
             format.append(String.format(topping.toString()));
-        }
+        });
 
         return format.toString();
     }
