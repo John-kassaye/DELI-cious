@@ -24,6 +24,11 @@ public class Order {
     }
 
     public void display() {
+        if (menus == null || menus.isEmpty()){
+            System.out.println("No items in order");
+            return;
+        }
+
         for (Menu menu : menus) {
             if (menu != null) {
                 if (menu instanceof Sandwich sandwich) {
