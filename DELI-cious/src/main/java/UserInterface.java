@@ -14,8 +14,7 @@ public class UserInterface {
                              Welcome to the DELICIOUS
                 
                 1️⃣ - New Order
-                2️⃣ - Exit
-                """;
+                2️⃣ - Exit""";
         System.out.println(homeScreen);
         String order = scanner.nextLine();
 
@@ -51,8 +50,7 @@ public class UserInterface {
                 4️⃣ - Custom sandwich BLT
                 5️⃣ - Custom Sandwich Philly Cheese Steak
                 6️⃣ - Checkout
-                7️⃣ - Exit
-                """;
+                7️⃣ - Exit""";
             System.out.println(order1);
             String choice = scanner.nextLine();
             switch (choice) {
@@ -108,12 +106,15 @@ public class UserInterface {
                         System.out.println("\n***** Checkout *****");
 
                         int orderNumber = 1;
+                        double totalPrice = 0;
                         for (Order o : menus){
                             System.out.println("\n****** Order " + orderNumber + "*****\n");
                             o.display();
+                            totalPrice += o.calculateTotal();
                             System.out.println();
                             orderNumber++;
                         }
+                        System.out.printf("%-30s %.2f","\nHere is your total price: " , totalPrice);
 
                         System.out.println("\n1- Confirm\n2- Delete");
                         String confirm = scanner.nextLine();
@@ -123,7 +124,7 @@ public class UserInterface {
                             for (Order o : menus){
                                 allMenus.addAll(o.getMenus());
                             }
-                            ReceiptManagement.writingReceipt(allMenus);
+                            ReceiptManagement.writingReceipt(menus);
                             input = false;
                         } else {
                             menus.clear();
@@ -311,7 +312,7 @@ public class UserInterface {
                 o Peppers
                 o Mayo
                 o Toasted
-""";
+                """;
         System.out.println(philly);
         System.out.println("""
                 1 - Confirm
@@ -517,8 +518,11 @@ public class UserInterface {
             }
         }
 
-        System.out.println(" \n" +
-                "\uD83D\uDD25 Is toasted");
+        System.out.println("""
+                
+                \uD83D\uDD25 Do you want it toasted?
+                1 - Yes
+                2 - no""");
         String toasted = scanner.nextLine();
         boolean isToasted = toasted.trim().equals("1") ? true : false;
 
@@ -528,7 +532,7 @@ public class UserInterface {
         toppings.addAll(regulars);
 
         List<Menu> menus = new ArrayList<>();
-        menus.add(new Sandwich(size, bread, toppings, sauce, isToasted));
+        menus.add(new Sandwich(size, bread, toppings,sauce, isToasted));
 
         return menus;
     }
@@ -536,7 +540,7 @@ public class UserInterface {
     public static List<Menu> drink(){
         String drinkSize = """
                
-                 🥤 Select drink size:
+                🥤 Select drink size:
                
                 1️⃣ - Small
                 2️⃣ - Medium

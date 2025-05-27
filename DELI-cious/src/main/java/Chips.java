@@ -6,13 +6,19 @@ public class Chips implements Menu{
     }
 
     public String getType() {
-        return type;
+        // I used the default Pita chips because I won't get a number greater than 3 in the first place
+        if (type.trim().equals("1")) {
+            return "Potato Chips";
+        } else if (type.trim().equals("2")) {
+            return "Tortilla Chips";
+        } else {
+            return "Pita Chips";
+        }
     }
 
     @Override
     public String getName() {
-        return String.format("%-30s %s","\nType",getType()) +
-                String.format("%-30s %s","\nPrice",getPrice());
+        return String.format("%-30s %s","\nType:",getType());
     }
 
     @Override

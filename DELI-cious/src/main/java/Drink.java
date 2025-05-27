@@ -24,7 +24,7 @@ public class Drink implements Menu {
 
     @Override
     public String getName() {
-       return String.format("%-30s %d","\nSize:",getSize()) +
+       return String.format("%-30s %d","\nSize:",getSize()) +"\"" +
                 String.format("%-30s %s","\nFlavor:",getFlavor());
     }
 

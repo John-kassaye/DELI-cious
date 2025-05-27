@@ -1,0 +1,17 @@
+*******DELI-cious*******
+
+---Sandwich---
+Size:                         4"
+Bread:                        White
+Premium Topping:              Steak
+Sauce:                        No sauce
+Toasted:                      Yes
+
+---Sandwich---
+Size:                         8"
+Bread:                        Wheat
+Premium Topping:              American
+Sauce:                        No sauce
+Toasted:                      Yes
+----------------------------------------------
+Total price:                   $16.10 

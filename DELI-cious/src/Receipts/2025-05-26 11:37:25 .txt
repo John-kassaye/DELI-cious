@@ -1,0 +1,11 @@
+*******DELI-cious*******--- Order #1---
+
+---Drink---
+Size:                         4"
+Flavor:                       Lemonade--- Order #2---
+
+---Drink---
+Size:                         4"
+Flavor:                       Coca
+----------------------------------------------
+Total price:                   $4.00 

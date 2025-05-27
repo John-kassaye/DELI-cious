@@ -1,0 +1,14 @@
+*******DELI-cious*******
+--- Order #1---
+---Sandwich---
+Size:                         8"
+Bread:                        Wheat
+Premium Topping:              Cheddar
+Sauce:                        No sauce
+Toasted:                      Yes
+--- Order #2---
+---Drink---
+Size:                         4"
+Flavor:                       Lemonade
+----------------------------------------------
+Total price:                   $11.10 

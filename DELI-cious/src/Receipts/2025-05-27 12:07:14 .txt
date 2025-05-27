@@ -1,0 +1,25 @@
+*******DELI-cious*******
+--- Order #1---
+
+---Sandwich---
+Size:                         4"
+Bread:                        White
+Premium Topping:              Steak
+Sauce:                        No sauce
+Toasted:                      Yes
+---Drink---
+Size:                         8"
+Flavor:                       Coca
+--- Order #2---
+
+---Sandwich---
+Size:                         4"
+Bread:                        White
+Premium Topping:              Steak
+Sauce:                        No sauce
+Toasted:                      Yes
+---Drink---
+Size:                         4"
+Flavor:                       Lemonade
+----------------------------------------------
+Total price:                   $18.50 

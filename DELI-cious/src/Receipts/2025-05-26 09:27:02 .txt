@@ -1,0 +1,14 @@
+*******DELI-cious*******
+
+---Sandwich---
+Size:                         4"
+Bread:                        White
+Premium Topping:              Steak
+Sauce:                        No sauce
+Toasted:                      Yes
+
+---Drink---
+Size:                         4"
+Flavor:                       Lemonade
+----------------------------------------------
+Total price:                   9.00 

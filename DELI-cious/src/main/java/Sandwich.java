@@ -71,17 +71,18 @@ public class Sandwich implements Menu {
             case "3" -> "Ketchup";
             case "4" -> "Ranch";
             case "5" -> "Thousand Islands";
-            default -> "Vinaigrette";
+            case "6" -> "Vinaigrette";
+            default -> "No sauce";
         };
     }
 
     @Override
     public String getName() {
-        return String.format("%-30s %d", "\nSize:", getSize()) +
+        return String.format("%-30s %d", "\nSize:", getSize()) + "\"" +
                 String.format("%-30s %s", "\nBread:", getTypeOfBread()) +
                 toppingToString() +
-                String.format("%-30s %s", "\nSauce", getSauce()) +
-                String.format("%-30s %s", "\nToasted", getToast());
+                String.format("%-30s %s", "\nSauce:", getSauce()) +
+                String.format("%-30s %s", "\nToasted:", getToast());
 
     }
 
