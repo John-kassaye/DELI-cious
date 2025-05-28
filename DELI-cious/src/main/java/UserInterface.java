@@ -135,14 +135,14 @@ public class UserInterface {
                         System.out.printf("%-30s $%.2f","\nHere is your total price: " , totalPrice);
 
                         boolean isCustomer = false;
-                    if (!more.trim().equals("1")) {
+
                         System.out.println("""
                                 
                                
-                                A customer will get a 10% discount! 🎉 Are you a customer?
+                                Do you have an account with us? 🎉 Customers with an account get a 10% discount!
                                 
-                                1️⃣ - Yes, I am! Please give me my discount. 💸
-                                2️⃣ - No, I’m not, but I want to become a customer. 🤝
+                                1️⃣ - Yes, I do! Please give me my discount. 💸
+                                2️⃣ - No, I don't, but I want to become a customer. 🤝
                                 3️⃣ - Thanks, I’ll pass. 🙏
                                 """);
                         String customer = scanner.nextLine();
@@ -190,7 +190,6 @@ public class UserInterface {
                     } else {
                             menus.clear();
                             orders.clear();
-                        }
                     }
                     break;
                 case "7":
@@ -206,14 +205,6 @@ public class UserInterface {
     public static List<Menu> customSandwich(String type){
 
         // i declared it here in case the user doesn't customize all of them.
-//        String bread = "1";
-//        int size = 8;
-//        String originalMeat = "6";
-//        String originalCheese = "9";
-//        String originalRegular = "1";
-//        String originalRegular2 = "4";
-//        String originalSauce = "4";
-
         // Set defaults
         int size = 8;
         String bread = "1";

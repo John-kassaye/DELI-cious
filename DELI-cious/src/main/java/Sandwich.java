@@ -5,7 +5,7 @@ public class Sandwich implements Menu {
     private int size;
     private String typeOfBread;
     private List<Topping> toppings = new ArrayList<>();
-    private boolean isToasted;
+    private boolean toasted;
     private String sauce;
 
     private static final double priceOf4 = 5.50;
@@ -15,7 +15,7 @@ public class Sandwich implements Menu {
     public Sandwich(int size, String typeOfBread, List<Topping> toppings, String sauce,boolean isToasted) {
         this.size = size;
         this.typeOfBread = typeOfBread;
-        this.isToasted = isToasted;
+        this.toasted = isToasted;
         this.toppings = toppings;
         this.sauce = sauce;
     }
@@ -42,12 +42,12 @@ public class Sandwich implements Menu {
     }
 
     public boolean isToasted() {
-        return isToasted;
+        return toasted;
     }
 
     public String getToast() {
         String is = "No";
-        if (isToasted) {
+        if (toasted) {
             is = "Yes";
         }
 
@@ -74,10 +74,6 @@ public class Sandwich implements Menu {
             case "6" -> "Vinaigrette";
             default -> "No sauce";
         };
-    }
-
-    public void addTopping(Topping topping) {
-        toppings.add(topping);
     }
 
     public void removeTopping(String toppingName) {
