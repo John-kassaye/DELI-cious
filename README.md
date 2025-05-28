@@ -22,9 +22,7 @@ This is a Java-based console application for managing a sandwich ordering system
 
 ## 🧱 Class Structure (UML)
 
-![UML Diagram](DELI-cious/DELI-cious/src/Diagram
-/Untitled Diagram.webp)
-
+![UML Diagram](src/diagram/UML_Diagram.webp)
 
 ---
 
