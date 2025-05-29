@@ -80,4 +80,4 @@ Here is your Total: $11.55
 
 ## 👨‍💻 Author
 
-Yohannes Kassaye
+John Kassaye
