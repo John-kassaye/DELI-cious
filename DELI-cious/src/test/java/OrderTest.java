@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,21 +9,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrderTest {
 
     @Test
+    @DisplayName("Calculate total price including sandwich, drink, and chips")
     void calculateTotal() {
         List<Topping> toppings = new ArrayList<>();
-        toppings.add(new PremiumTopping("Steak",true,4));
-        toppings.add(new PremiumTopping("American",true,8));
+        toppings.add(new PremiumTopping("1",true,4));
+        toppings.add(new PremiumTopping("7",true,4));
 
 
-        Menu menu1 = new Sandwich(4,"White",toppings,true);
-        Menu menu2 = new Drink(4,"Lemonade");
+        Menu menu1 = new Sandwich(4,"White",toppings,"1",true);
+        Menu menu2 = new Drink("1","Lemonade");
         Menu menu = new Chips("Chips");
 
-        Order order = new Order();
-        order.addMenu(menu);
-        order.addMenu(menu1);
-        order.addMenu(menu2);
+        List<Menu> menus = new ArrayList<>();
+        menus.add(menu);
+        menus.add(menu1);
+        menus.add(menu2);
 
-        assertEquals(7.1,order.calculateTotal());
+        Order order = new Order();
+        order.addMenu(menus);
+
+        assertEquals(11.55,order.calculateTotal());
     }
 }

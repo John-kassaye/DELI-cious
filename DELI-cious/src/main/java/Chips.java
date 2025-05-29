@@ -18,7 +18,7 @@ public class Chips implements Menu{
 
     @Override
     public String getName() {
-        return "-----Chips-----";
+        return "*****Chips*****";
     }
 
     @Override

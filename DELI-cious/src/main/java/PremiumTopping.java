@@ -59,7 +59,7 @@ public class PremiumTopping extends Topping {
         if (isMeat()) {
             if (getSandwichSize() == 4) {
                 basePrice = 1.00;
-                extraPrice = 0.50;
+                extraPrice = 0.5;
             } else if (getSandwichSize() == 8) {
                 basePrice = 2.00;
                 extraPrice = 1.00;

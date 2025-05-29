@@ -29,7 +29,7 @@ public class Drink implements Menu {
 
     @Override
     public String getName() {
-       return "-----Drink-----";
+       return "*****Drink*****";
 
     }
 
