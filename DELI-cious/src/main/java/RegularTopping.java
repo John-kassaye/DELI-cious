@@ -27,4 +27,23 @@ public class RegularTopping extends Topping{
     public String toString(){
         return String.format("%-30s %s","\nRegular topping",getName());
     }
+
+    public static void regularTopping(){
+        String regular = """
+                
+                🥬 Regular Toppings:
+                
+                1️⃣ - lettuce
+                2️⃣ - peppers
+                3️⃣ - onions
+                4️⃣ - tomatoes
+                5️⃣ - jalapeños
+                6️⃣ - cucumbers
+                7️⃣ - pickles
+                8️⃣ - guacamole
+                9️⃣ - mushrooms
+                """;
+        System.out.println(regular);
+    }
+
 }

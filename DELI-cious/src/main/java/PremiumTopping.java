@@ -87,4 +87,34 @@ public class PremiumTopping extends Topping {
     public String toString() {
         return String.format("%-30s %s", "\nPremium Topping:",getName());
     }
+
+    public static void meatTopping() {
+
+        String topping = """
+                
+                🥩 Meats:
+                
+                1️⃣ - steak
+                2️⃣ - ham
+                3️⃣ - salami
+                4️⃣ - roast beef
+                5️⃣ - chicken
+                6️⃣ - bacon
+                """;
+        System.out.println(topping);
+    }
+
+    public static void cheeseTopping(){
+        String cheese = """
+               
+                🧀 Cheeses:
+                
+                7️⃣ - american
+                8️⃣ - provolone
+                9️⃣ - cheddar
+                🔟 - swiss
+                """;
+        System.out.println(cheese);
+    }
+
 }
