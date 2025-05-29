@@ -5,12 +5,8 @@ import java.util.Scanner;
 
 public class UserInterface {
     static Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) {
-        homeScreen();
 
-    }
-
-    public static void homeScreen(){
+    public void homeScreen(){
         String homeScreen = """
                              Welcome to the DELICIOUS
                 
@@ -57,24 +53,39 @@ public class UserInterface {
             System.out.println(order1);
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1":
-                    sandwich = sandwich();
-                    break;
-                case "2":
-                    drink = drink();
-                    break;
-                case "3":
-                    chips = chips();
-                    break;
-                case "4":
+                case "1" -> sandwich = sandwich();
+                case "2" -> drink = drink();
+                case "3" -> chips = chips();
+                case "4" -> {
+                    System.out.println("""
+                                
+                                BLT
+                                
+                                o 8" white bread
+                                o Bacon
+                                o Cheddar
+                                o Lettuce
+                                o Tomato
+                                o Ranch
+                                o Toasted
+                                """);
                     customSandwich = customSandwich("BLT");
-                    break;
-                case "5":
+                }
+                case "5" -> {
+                    System.out.println("""
+                                
+                                Philly Cheese Steak
+                                
+                                o 8" white bread
+                                o Steak
+                                o American Cheese
+                                o Peppers
+                                o Mayo
+                                o Toasted
+                                """);
                     customSandwich2 = customSandwich("PHILLY");
-                    break;
-                case "6":
-
-                    if (sandwich != null) {
+                }
+                case "6" -> {if (sandwich != null) {
                         orders.addAll(sandwich);
                     }
 
@@ -102,7 +113,10 @@ public class UserInterface {
                     order.addMenu(orders);
                     menus.add(order);
 
-                    System.out.println("\n1 - Add another order\n2 - Checkout");
+                    System.out.println("""
+                            1 - Add another order
+                            2 - Checkout
+                            """);
                     String more = scanner.nextLine();
 
                     if (more.trim().equals("1")){
@@ -132,6 +146,7 @@ public class UserInterface {
                             System.out.println();
                             orderNumber++;
                         }
+                        System.out.println("---------------------------------");
                         System.out.printf("%-30s $%.2f","\nHere is your total price: " , totalPrice);
 
                         boolean isCustomer = false;
@@ -165,10 +180,15 @@ public class UserInterface {
 
                         int people = 1;
 
-                        System.out.println("Do you want to split the check?");
+                        System.out.println("""
+                                
+                                Do you want to split the check?
+                                1 - yes
+                                2 - no
+                                """);
                         String split = scanner.nextLine();
                         if (split.trim().equals("1")){
-                            System.out.println("How many people");
+                            System.out.println("How many people?");
                             people = scanner.nextInt();
                             scanner.nextLine();
                             totalPrice/= people;
@@ -191,20 +211,16 @@ public class UserInterface {
                             menus.clear();
                             orders.clear();
                     }
-                    break;
-                case "7":
-                    input = true;
-                    break;
-                default:
-                    System.out.println("Invalid input please try again.");
-                    break;
+                }
+                case "7" -> input = true;
+                default -> System.out.println("Invalid input please try again.");
             }
         }
     }
 
     public static List<Menu> customSandwich(String type){
 
-        // i declared it here in case the user doesn't customize all of them.
+        // I declared it here in case the user doesn't customize all of them.
         // Set defaults
         int size = 8;
         String bread = "1";
@@ -221,10 +237,10 @@ public class UserInterface {
             originalRegular2 = "4";    // Tomato
             originalSauce = "4";      // Mayo
         } else if (type.equals("PHILLY")) {
-            originalMeat = "8";       // Steak
-            originalCheese = "2";     // American
-            originalRegular = "3";    // Onion
-            originalSauce = "2";      // Chipotle
+            originalMeat = "1";       // Steak
+            originalCheese = "7";     // American
+            originalRegular = "2";    // Onion
+            originalSauce = "1";      // Chipotle
         }
 
 
@@ -233,6 +249,7 @@ public class UserInterface {
        boolean isRegular = false;
 
         System.out.println("""
+                
                 1 - Confirm
                 2 - Customize the toppings
                 """);
@@ -322,8 +339,7 @@ public class UserInterface {
                 regulars.add(new RegularTopping(originalRegular2, true));
             }
 
-            System.out.println(" \n" +
-                    "\uD83D\uDD25 Is toasted");
+            toastOption();
             String toasted = scanner.nextLine();
             boolean isToasted = toasted.trim().equals("1");
 
@@ -332,14 +348,23 @@ public class UserInterface {
             toppings.addAll(cheeses);
             toppings.addAll(regulars);
 
-            menuList.add(new CustomSandwich(size, bread, toppings, sauce, isToasted));
-        } else {
-            List<Topping> toppings = new ArrayList<>();
-            toppings.add(new PremiumTopping(originalMeat, true, size));
-            toppings.add(new PremiumTopping(originalCheese, true, size));
-            toppings.add(new RegularTopping(originalRegular, true));
+            menuList.add(new Sandwich(size, bread, toppings, sauce, isToasted));
+        }
 
-            menuList.add(new CustomSandwich(size, bread, toppings, originalSauce, true));
+        // If I use this I dont need a Custom Sandwich class
+//        else {
+//            List<Topping> toppings = new ArrayList<>();
+//            toppings.add(new PremiumTopping(originalMeat, true, size));
+//            toppings.add(new PremiumTopping(originalCheese, true, size));
+//            toppings.add(new RegularTopping(originalRegular, true));
+//
+//            menuList.add(new Sandwich(size, bread, toppings, originalSauce, true));
+//        }
+
+        else if (type.trim().equals("PHILLY")) {
+            menuList.add(CustomSandwich.createPhillyCheeseSteak());
+        } else if (type.trim().equals("BLT")) {
+            menuList.add(CustomSandwich.createBLT());
         }
 
         return menuList;
@@ -399,47 +424,40 @@ public class UserInterface {
             String topping = scanner.nextLine();
 
             switch (topping) {
-                case "1":
+                case "1" -> {
                     meatTopping();
                     String meat = scanner.nextLine();
                     System.out.println("Extra?");
                     String isExtraMeat = scanner.nextLine();
                     boolean extraMeat = isExtraMeat.trim().equals("1");
-                    meats.add(new PremiumTopping(meat,extraMeat,size));
-                    break;
-                case "2":
+                    meats.add(new PremiumTopping(meat, extraMeat, size));
+                }
+                case "2" -> {
                     cheeseTopping();
                     String cheese = scanner.nextLine();
                     System.out.println("Extra?\n1-yes\n2-no");
                     String isExtraCheese = scanner.nextLine();
                     boolean extraCheese = isExtraCheese.trim().equals("1");
-                    cheeses.add(new PremiumTopping(cheese,extraCheese,size));
-                    break;
-                case "3":
+                    cheeses.add(new PremiumTopping(cheese, extraCheese, size));
+                }
+                case "3" -> {
                     regularTopping();
                     String regular = scanner.nextLine();
                     System.out.println("Extra?\n1: yes\n2: no");
                     String isExtraRegular = scanner.nextLine();
                     boolean extraRegular = isExtraRegular.trim().equals("1");
                     regulars.add(new RegularTopping(regular,extraRegular));
-                    break;
-                case "4":
+                }
+                case "4" -> {
                     saucesTopping();
                     sauce = scanner.nextLine();
-                    break;
-                case "5":
-                    input = false;
-                    break;
-                default:
-                    System.out.println("Invalid input");
+                }
+                case "5" -> input = false;
+                default -> System.out.println("Invalid input");
             }
         }
 
-        System.out.println("""
-                
-                \uD83D\uDD25 Do you want it toasted?
-                1 - Yes
-                2 - no""");
+        toastOption();
         String toasted = scanner.nextLine();
         boolean isToasted = toasted.trim().equals("1");
 
@@ -567,5 +585,14 @@ public class UserInterface {
                 6️⃣ - Vinaigrette
                 """;
         System.out.println(sauces);
+    }
+
+    public static void toastOption(){
+        System.out.println("""
+                
+                \uD83D\uDD25 Would you like it toasted??
+                1 - Yes
+                2 - no
+                """);
     }
 }

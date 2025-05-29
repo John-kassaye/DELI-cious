@@ -23,22 +23,10 @@ public class ReceiptManagement {
 
             for (Order order : orders) {
                 fileWriter.write("\n\n--- Order #" + orderNumber++ + "---");
-
                 double orderPrice = 0;
                 for (Menu menu : order.getMenus()){
-                    if (menu instanceof Sandwich sandwich){
-                        fileWriter.write("\n---Sandwich---");
-                        fileWriter.write(sandwich.getName());
-                        orderPrice += sandwich.getPrice();
-                    } else if (menu instanceof Drink drink) {
-                        fileWriter.write("\n---Drink---");
-                        fileWriter.write(drink.getName());
-                        orderPrice+= drink.getPrice();
-                    } else if (menu instanceof Chips chips) {
-                        fileWriter.write("\n---Chips---");
-                        fileWriter.write(chips.getName());
-                        orderPrice += chips.getPrice();
-                    }
+                    fileWriter.write("\n" + menu.getName());
+                    orderPrice += menu.getPrice();
                 }
                 fileWriter.write(String.format("\n%-30s $%.2f ","Total price: " , orderPrice));
 

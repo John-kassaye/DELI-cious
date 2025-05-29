@@ -33,6 +33,10 @@ public class Sandwich implements Menu {
         };
     }
 
+    public List<Topping> getToppings() {
+        return toppings;
+    }
+
     public void addToppings(Topping topping) {
         toppings.add(topping);
     }
@@ -83,7 +87,8 @@ public class Sandwich implements Menu {
 
     @Override
     public String getName() {
-        return String.format("%-30s %d", "\nSize:", getSize()) + "\"" +
+        return String.format("-----Sandwich-----") +
+                String.format("%-30s %d", "\nSize:", getSize()) + "\"" +
                 String.format("%-30s %s", "\nBread:", getTypeOfBread()) +
                 toppingToString() +
                 String.format("%-30s %s", "\nSauce:", getSauce()) +

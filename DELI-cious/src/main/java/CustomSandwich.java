@@ -3,6 +3,10 @@ import java.util.List;
 
 public class CustomSandwich extends Sandwich{
 
+    private static final double priceOf4 = 5.50;
+    private static final double priceOf8 = 7.00;
+    private static final double priceOf12 = 8.50;
+
     public CustomSandwich(int size, String typeOfBread, List<Topping> toppings, String sauce, boolean isToasted) {
         super(size, typeOfBread, toppings, sauce, isToasted);
     }
@@ -33,4 +37,24 @@ public class CustomSandwich extends Sandwich{
 
         return new Sandwich(size,bread,toppings,sauce,true);
     }
+
+//    @Override
+//    public double getPrice() {
+//        double price = priceOf12;
+//
+//        if (getTypeOfBread().trim().equalsIgnoreCase("White") || getTypeOfBread().trim().equalsIgnoreCase("Wheat")
+//                || getTypeOfBread().trim().equalsIgnoreCase("Rye") || getTypeOfBread().trim().equalsIgnoreCase("Wrap")) {
+//            if (getSize() == 4) {
+//                price = priceOf4;
+//            } else if (getSize() == 8) {
+//                price = priceOf8;
+//            }
+//        }
+//
+//        for (Topping topping : getToppings()) {
+//            price += topping.getPrice();
+//        }
+//
+//        return price;
+//    }
 }

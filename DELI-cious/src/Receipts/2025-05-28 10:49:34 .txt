@@ -1,0 +1,25 @@
+*******DELI-cious*******
+
+--- Order #1---
+-----Sandwich-----
+Size:                         8"
+Bread:                        White
+Premium Topping:              Provolone
+Premium Topping:              Ham
+Regular topping               onions
+Sauce:                        Mustard
+Toasted:                      Yes
+Total price:                   $12.10 
+
+--- Order #2---
+-----Sandwich-----
+Size:                         8"
+Bread:                        White
+Premium Topping:              Bacon
+Premium Topping:              Cheddar
+Regular topping               lettuce
+Sauce:                        Ranch
+Toasted:                      Yes
+Total price:                   $12.10 
+----------------------------------------------
+Total price:                   $24.20 

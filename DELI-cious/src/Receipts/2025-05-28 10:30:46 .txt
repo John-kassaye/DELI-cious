@@ -1,0 +1,30 @@
+*******DELI-cious*******
+
+--- Order #1---
+-----Drink-----
+Size:                         4"
+Flavor:                       Lemonade
+-----Sandwich-----
+Size:                         8"
+Bread:                        White
+Premium Topping:              Bacon
+Premium Topping:              Cheddar
+Regular topping               lettuce
+Sauce:                        Ranch
+Toasted:                      Yes
+Total price:                   $14.10 
+
+--- Order #2---
+-----Sandwich-----
+Size:                         4"
+Bread:                        White
+Premium Topping:              Steak
+Sauce:                        No sauce
+Toasted:                      Yes
+-----Drink-----
+Size:                         4"
+Flavor:                       Lemonade
+Total price:                   $9.00 
+----------------------------------------------
+Total price:                   $10.40 
+Split between 2 people:         $5.20 each

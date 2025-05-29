@@ -18,7 +18,8 @@ public class Chips implements Menu{
 
     @Override
     public String getName() {
-        return String.format("%-30s %s","\nType:",getType());
+        return String.format("-----Chips-----") +
+                String.format("%-30s %s","\nType:",getType());
     }
 
     @Override
