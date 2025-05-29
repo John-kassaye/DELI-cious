@@ -16,6 +16,8 @@ This is a Java-based console application for managing a sandwich ordering system
 - Select drinks and chips
 - Calculate total cost of the order
 - Display and generate order summary
+- **💲 Discount feature for customers with an account**
+- **👥 Option to split the check among multiple customers**
 
 ---
 
@@ -32,6 +34,8 @@ This is a Java-based console application for managing a sandwich ordering system
 - `Toppings`, with subclasses `RegularToppings` and `PremiumToppings`
 - `Order` class to manage complete orders
 - `ReceiptManagement` to write receipt output
+- `Customer` class to manage discounts
+- Logic for splitting checks across multiple people
 
 ---
 
@@ -53,18 +57,19 @@ This is a Java-based console application for managing a sandwich ordering system
 
 ```
 *****Sandwich*****
+Size: 8"
 Bread: Wheat
 Premium Topping: Bacon
 Regular Toppings: Lettuce
 Sauce: Mayo
 Toasted: Yes
-Price: $8.50
 
 *****Drink*****
-Coke - $1.50
+Size: 4"
+Flavor: Coke
 
 *****Chips*****
-BBQ - $1.00
+Type: BBQ
 
 Here is your Total: $11.00
 ```

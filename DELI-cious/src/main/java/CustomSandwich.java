@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomSandwich extends Sandwich{
-
     private static final double priceOf4 = 5.50;
     private static final double priceOf8 = 7.00;
     private static final double priceOf12 = 8.50;

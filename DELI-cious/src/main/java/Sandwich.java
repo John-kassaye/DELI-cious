@@ -87,13 +87,7 @@ public class Sandwich implements Menu {
 
     @Override
     public String getName() {
-        return String.format("-----Sandwich-----") +
-                String.format("%-30s %d", "\nSize:", getSize()) + "\"" +
-                String.format("%-30s %s", "\nBread:", getTypeOfBread()) +
-                toppingToString() +
-                String.format("%-30s %s", "\nSauce:", getSauce()) +
-                String.format("%-30s %s", "\nToasted:", getToast());
-
+        return "-----Sandwich-----";
     }
 
     @Override
@@ -114,5 +108,14 @@ public class Sandwich implements Menu {
         }
 
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-30s %d", "\nSize:", getSize()) + "\"" +
+                String.format("%-30s %s", "\nBread:", getTypeOfBread()) +
+                toppingToString() +
+                String.format("%-30s %s", "\nSauce:", getSauce()) +
+                String.format("%-30s %s", "\nToasted:", getToast());
     }
 }

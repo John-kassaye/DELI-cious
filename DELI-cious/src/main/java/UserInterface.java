@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class UserInterface {
     static Scanner scanner = new Scanner(System.in);
-
     public void homeScreen(){
         String homeScreen = """
                              Welcome to the DELICIOUS
@@ -351,7 +350,7 @@ public class UserInterface {
             menuList.add(new Sandwich(size, bread, toppings, sauce, isToasted));
         }
 
-        // If I use this I dont need a Custom Sandwich class
+// Using this block makes the CustomSandwich class unnecessary
 //        else {
 //            List<Topping> toppings = new ArrayList<>();
 //            toppings.add(new PremiumTopping(originalMeat, true, size));
@@ -481,13 +480,17 @@ public class UserInterface {
                 2️⃣ - Medium
                 3️⃣ - Large
                 """;
-        System.out.println(drinkSize);
-        String sizeChoice = scanner.nextLine();
-        int size = 12;
-        if (sizeChoice.trim().equals("1")){
-            size = 4;
-        } else if (sizeChoice.trim().equals("2")) {
-            size = 8;
+
+        String sizeChoice = "";
+        while (true){
+            System.out.println(drinkSize);
+            sizeChoice = scanner.nextLine();
+
+            if (sizeChoice.trim().equals("1") || sizeChoice.trim().equals("2") || sizeChoice.trim().equals("3")){
+                break;
+            } else {
+                System.out.println("❌ Invalid input. Please enter 1, 2, or 3.");
+            }
         }
 
         String drinkFlavor = """
@@ -495,23 +498,28 @@ public class UserInterface {
                 🥤 Select flavor:
                 
                 1️⃣ - Lemonade
-                2️⃣ - Coca
+                2️⃣ - Coke
+                3️⃣ - Sprite
                 """;
-        System.out.println(drinkFlavor);
-        String flavorChoice = scanner.nextLine();
-        String flavor = "Coca";
+        String flavorChoice = "";
+        while (true) {
+            System.out.println(drinkFlavor);
+            flavorChoice = scanner.nextLine();
 
-        if (flavorChoice.trim().equals("1")){
-            flavor = "Lemonade";
+            if (flavorChoice.trim().equals("1") || flavorChoice.trim().equals("2") || flavorChoice.trim().equals("3")){
+                break;
+            } else {
+                System.out.println("❌ Invalid input. Please enter 1, 2, or 3.");
+            }
         }
 
         List<Menu> drinks = new ArrayList<>();
-        drinks.add(new Drink(size,flavor));
+        drinks.add(new Drink(sizeChoice,flavorChoice));
         return drinks;
     }
 
-    public static List<Menu> chips(){
-        String chips = """
+    public static List<Menu> chips() {
+        String chip = """
                 
                 🍟 select chips type:
                 
@@ -519,13 +527,22 @@ public class UserInterface {
                 2️⃣ - Tortilla Chips
                 3️⃣ - Pita Chips
                 """;
-        System.out.println(chips);
-        String type = scanner.nextLine();
-        List<Menu> chipses = new ArrayList<>();
-        chipses.add(new Chips(type));
-        return chipses;
-    }
+        String type = "";
+        while (true) {
+            System.out.println(chip);
+            type = scanner.nextLine();
 
+            if (type.equals("1") || type.equals("2") || type.equals("3")) {
+                break;
+            } else {
+                System.out.println("❌ Invalid input. Please enter 1, 2, or 3.");
+            }
+        }
+
+        List<Menu> chips = new ArrayList<>();
+        chips.add(new Chips(type));
+        return chips;
+    }
     public static void meatTopping() {
 
         String topping = """

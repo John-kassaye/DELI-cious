@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ReceiptManagement {
-
     public static void writingReceipt(List<Order> orders, double finalPrice, int people){
 
         LocalDateTime localDateTime =  LocalDateTime.now();
