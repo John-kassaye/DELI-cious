@@ -103,6 +103,15 @@
 
 <br>
 
+<details>
+<summary> 🧱 Interesting code</summary>
+
+![Interesting code](DELI-cious/src/Diagram/interesting_code.png)
+
+</details>
+
+<br>
+
 <details open>
 <summary>📸 Demo Preview</summary>
 
