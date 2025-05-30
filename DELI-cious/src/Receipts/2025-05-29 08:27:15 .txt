@@ -1,0 +1,24 @@
+*******DELI-cious*******
+
+--- Order #1---
+
+*****Sandwich*****
+
+Size:                         4"
+Bread:                        White
+Premium Topping:              Salami
+Sauce:                        No sauce
+Toasted:                      Yes
+
+*****Drink*****
+
+Size:                         Medium"
+Flavor:                       Sprite
+
+*****Chips*****
+
+Type:                         Potato Chips
+Total price:                   $11.00 
+----------------------------------------------
+Total price:                   $5.50 
+Split between 2 people:         $2.75 each

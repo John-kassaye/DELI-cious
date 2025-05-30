@@ -13,7 +13,7 @@ public class LoginManagement {
         String[] parts = new String[0];
         String email = "";
 
-        System.out.println("Select an option:");
+        System.out.println("\nSign up here");
         System.out.println("Enter your first name:");
         String firstName = scanner.nextLine();
 
@@ -68,6 +68,7 @@ public class LoginManagement {
         while (!input) {
 
             System.out.println("*****DELI-cious*****");
+            System.out.println(" \n\uD83D\uDD10 login here\n");
             System.out.println("\nEnter your Email");
             String email = scanner.nextLine();
 

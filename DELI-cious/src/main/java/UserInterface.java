@@ -165,10 +165,10 @@ public class UserInterface {
                             people = scanner.nextInt();
                             scanner.nextLine();
                             totalPrice/= people;
-                            System.out.printf("\n%-30s $%.2f each "," Split between " + people + " people:", totalPrice);
+                            System.out.printf("\n$%.2f each Split between " + people + " people:", totalPrice);
                         }
 
-                        System.out.println("\n1- Confirm ✅\n2- Delete❌");
+                        System.out.println("\n1- Confirm ✅\n2- Delete ❌");
                         String confirm = scanner.nextLine();
                         if (confirm.trim().equals("1")) {
                             List<Menu> allMenus = new ArrayList<>();
