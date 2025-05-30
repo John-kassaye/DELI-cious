@@ -37,18 +37,6 @@ public class Sandwich implements Menu {
         return toppings;
     }
 
-    public void addToppings(Topping topping) {
-        toppings.add(topping);
-    }
-
-    public double calculatePrice() {
-        return 0;
-    }
-
-    public boolean isToasted() {
-        return toasted;
-    }
-
     public String getToast() {
         String is = "No";
         if (toasted) {
