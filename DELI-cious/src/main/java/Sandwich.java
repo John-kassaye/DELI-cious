@@ -82,7 +82,7 @@ public class Sandwich implements Menu {
 
     @Override
     public String getName() {
-        return "*****Sandwich*****";
+        return "\n*****Sandwich*****";
     }
 
     @Override

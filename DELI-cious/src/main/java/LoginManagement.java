@@ -95,7 +95,8 @@ public class LoginManagement {
 
         while (!input) {
 
-            System.out.println("Enter your Email");
+            System.out.println("*****DELI-cious*****");
+            System.out.println("\nEnter your Email");
             String email = scanner.nextLine();
 
             System.out.println("Enter your password");

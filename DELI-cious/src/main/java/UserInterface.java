@@ -67,25 +67,15 @@ public class UserInterface {
                     }
                 }
                 case "5" -> {
-                    if (sandwich != null) {
-                        orders.addAll(sandwich);
-                    }
+                    if (sandwich != null) {orders.addAll(sandwich);}
 
-                    if (drink != null) {
-                        orders.addAll(drink);
-                    }
+                    if (drink != null) {orders.addAll(drink);}
 
-                    if (chips != null) {
-                        orders.addAll(chips);
-                    }
+                    if (chips != null) {orders.addAll(chips);}
 
-                    if (customSandwich != null){
-                        orders.addAll(customSandwich);
-                    }
+                    if (customSandwich != null){orders.addAll(customSandwich);}
 
-                    if (customSandwich2 != null){
-                        orders.addAll(customSandwich2);
-                    }
+                    if (customSandwich2 != null){orders.addAll(customSandwich2);}
 
                     if (orders.isEmpty()) {
                         System.out.println("Nothing to checkout.");
@@ -158,12 +148,13 @@ public class UserInterface {
                                 totalPrice*= 0.9 ;
                                 System.out.printf("%-30s %.2f","\nHere is your price after discount: " , totalPrice);
                             }
-                            }
+                        }
 
                         int people = 1;
 
                         System.out.println("""
                                 
+                               
                                 Do you want to split the check?
                                 1 - yes
                                 2 - no
@@ -187,6 +178,10 @@ public class UserInterface {
 
                             ReceiptManagement.writingReceipt(menus,totalPrice,people);
                             System.out.println("🎉 Order confirmed. Thank you for your purchase!");
+
+                            if (isCustomer){
+                                System.out.println("\uD83D\uDCE7 Receipt sent to your email");
+                            }
                             input = false;
                         }
                     } else {
@@ -194,110 +189,121 @@ public class UserInterface {
                             orders.clear();
                     }
                 }
-                case "6" -> input = true;
+                case "6" -> {
+                    System.out.println("Exiting...");
+                    input = true;
+                }
                 default -> System.out.println("Invalid input please try again.");
             }
         }
     }
 
     public static List<Menu> sandwich() {
-        String sandwichBread = """
-                
-                🍞 Select your bread:
-                
-                1️⃣ - White
-                2️⃣ - Wheat
-                3️⃣ - Rye
-                4️⃣ - Wrap
-                """;
-        System.out.println(sandwichBread);
-        String bread = scanner.nextLine();
-
-        String sandwichSize = """
-                
-                📏 Select sandwich size:
-                
-                1️⃣ - 4"
-                2️⃣ - 8"
-                3️⃣ - 12"
-                """;
-        System.out.println(sandwichSize);
-        String sizeChoice = scanner.nextLine();
-        int size = switch (sizeChoice) {
-            case "1" -> 4;
-            case "2" -> 8;
-            case "3" -> 12;
-            default -> {
-                System.out.println("Invalid choice. Defaulting to 4\"");
-                yield 4;     // This one is IntelliJ's suggestion.
-            }
-        };
-        List<Topping> meats = new ArrayList<>();
-        List<Topping> cheeses = new ArrayList<>();
-        List<Topping> regulars = new ArrayList<>();
-        String sauce = "";
-
-        boolean input = true;
-        while (input) {
-            String sandwichTopping = """
-                    
-                    Add Sandwich Options:
-                    
-                    1️⃣ - 🥩 Add Meats
-                    2️⃣ - 🧀 Add Cheese
-                    3️⃣ - 🥗 Add Other Toppings
-                    4️⃣ - 🧂 Add Sauces
-                    5️⃣ - 🔙 back
-                    """;
-
-            System.out.println(sandwichTopping);
-            String topping = scanner.nextLine();
-
-            switch (topping) {
-                case "1" -> {
-                    PremiumTopping.meatTopping();
-                    String meat = scanner.nextLine();
-                    System.out.println("Extra?");
-                    String isExtraMeat = scanner.nextLine();
-                    boolean extraMeat = isExtraMeat.trim().equals("1");
-                    meats.add(new PremiumTopping(meat, extraMeat, size));
-                }
-                case "2" -> {
-                    PremiumTopping.cheeseTopping();
-                    String cheese = scanner.nextLine();
-                    System.out.println("Extra?\n1-yes\n2-no");
-                    String isExtraCheese = scanner.nextLine();
-                    boolean extraCheese = isExtraCheese.trim().equals("1");
-                    cheeses.add(new PremiumTopping(cheese, extraCheese, size));
-                }
-                case "3" -> {
-                    RegularTopping.regularTopping();
-                    String regular = scanner.nextLine();
-                    System.out.println("Extra?\n1: yes\n2: no");
-                    String isExtraRegular = scanner.nextLine();
-                    boolean extraRegular = isExtraRegular.trim().equals("1");
-                    regulars.add(new RegularTopping(regular,extraRegular));
-                }
-                case "4" -> {
-                    saucesTopping();
-                    sauce = scanner.nextLine();
-                }
-                case "5" -> input = false;
-                default -> System.out.println("Invalid input");
-            }
-        }
-
-        toastOption();
-        String toasted = scanner.nextLine();
-        boolean isToasted = toasted.trim().equals("1");
-
-        List<Topping> toppings = new ArrayList<>();
-        toppings.addAll(meats);
-        toppings.addAll(cheeses);
-        toppings.addAll(regulars);
-
         List<Menu> menus = new ArrayList<>();
-        menus.add(new Sandwich(size, bread, toppings,sauce, isToasted));
+
+        boolean addAnotherSandwich = true;
+        while (addAnotherSandwich) {
+            String sandwichBread = """
+                    
+                    🍞 Select your bread:
+                    
+                    1️⃣ - White
+                    2️⃣ - Wheat
+                    3️⃣ - Rye
+                    4️⃣ - Wrap
+                    """;
+            System.out.println(sandwichBread);
+            String bread = scanner.nextLine();
+
+            String sandwichSize = """
+                    
+                    📏 Select sandwich size:
+                    
+                    1️⃣ - 4"
+                    2️⃣ - 8"
+                    3️⃣ - 12"
+                    """;
+            System.out.println(sandwichSize);
+            String sizeChoice = scanner.nextLine();
+            int size = switch (sizeChoice) {
+                case "1" -> 4;
+                case "2" -> 8;
+                case "3" -> 12;
+                default -> {
+                    System.out.println("Invalid choice. Defaulting to 4\"");
+                    yield 4;     // This one is IntelliJ's suggestion.
+                }
+            };
+            List<Topping> meats = new ArrayList<>();
+            List<Topping> cheeses = new ArrayList<>();
+            List<Topping> regulars = new ArrayList<>();
+            String sauce = "";
+
+            boolean input = true;
+            while (input) {
+                String sandwichTopping = """
+                        
+                        Add Sandwich Options:
+                        
+                        1️⃣ - 🥩 Add Meats
+                        2️⃣ - 🧀 Add Cheese
+                        3️⃣ - 🥗 Add Other Toppings
+                        4️⃣ - 🧂 Add Sauces
+                        5️⃣ - 🔙 back
+                        """;
+
+                System.out.println(sandwichTopping);
+                String topping = scanner.nextLine();
+
+                switch (topping) {
+                    case "1" -> {
+                        PremiumTopping.meatTopping();
+                        String meat = scanner.nextLine();
+                        System.out.println("Extra?");
+                        String isExtraMeat = scanner.nextLine();
+                        boolean extraMeat = isExtraMeat.trim().equals("1");
+                        meats.add(new PremiumTopping(meat, extraMeat, size));
+                    }
+                    case "2" -> {
+                        PremiumTopping.cheeseTopping();
+                        String cheese = scanner.nextLine();
+                        System.out.println("Extra?\n1-yes\n2-no");
+                        String isExtraCheese = scanner.nextLine();
+                        boolean extraCheese = isExtraCheese.trim().equals("1");
+                        cheeses.add(new PremiumTopping(cheese, extraCheese, size));
+                    }
+                    case "3" -> {
+                        RegularTopping.regularTopping();
+                        String regular = scanner.nextLine();
+                        System.out.println("Extra?\n1: yes\n2: no");
+                        String isExtraRegular = scanner.nextLine();
+                        boolean extraRegular = isExtraRegular.trim().equals("1");
+                        regulars.add(new RegularTopping(regular, extraRegular));
+                    }
+                    case "4" -> {
+                        saucesTopping();
+                        sauce = scanner.nextLine();
+                    }
+                    case "5" -> input = false;
+                    default -> System.out.println("Invalid input");
+                }
+            }
+
+            toastOption();
+            String toasted = scanner.nextLine();
+            boolean isToasted = toasted.trim().equals("1");
+
+            List<Topping> toppings = new ArrayList<>();
+            toppings.addAll(meats);
+            toppings.addAll(cheeses);
+            toppings.addAll(regulars);
+
+            menus.add(new Sandwich(size, bread, toppings, sauce, isToasted));
+
+            System.out.println("Would you like to add another sandwich to your order? (1 = yes, 2 = no)");
+            String another = scanner.nextLine();
+            addAnotherSandwich = another.trim().equals("1");
+        }
 
         return menus;
     }
