@@ -80,11 +80,6 @@ public class Sandwich implements Menu {
         };
     }
 
-    public void removeTopping(String toppingName) {
-        toppings.removeIf(t -> t.getName().equalsIgnoreCase(toppingName));
-    }
-
-
     @Override
     public String getName() {
         return "*****Sandwich*****";

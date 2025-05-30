@@ -1,9 +1,0 @@
-
-Size:                         8
-Bread:                        Wheat
-Premium Topping:              American
-Sauce                         Vinaigrette
-Toasted                       Yes
-Size:                         12
-Flavor:                       Lemonade
-Total price:                   12.10 

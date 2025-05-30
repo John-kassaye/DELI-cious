@@ -45,5 +45,4 @@ public class RegularTopping extends Topping{
                 """;
         System.out.println(regular);
     }
-
 }

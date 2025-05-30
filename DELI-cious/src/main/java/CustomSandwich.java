@@ -37,23 +37,32 @@ public class CustomSandwich extends Sandwich{
         return new Sandwich(size,bread,toppings,sauce,true);
     }
 
-//    @Override
-//    public double getPrice() {
-//        double price = priceOf12;
-//
-//        if (getTypeOfBread().trim().equalsIgnoreCase("White") || getTypeOfBread().trim().equalsIgnoreCase("Wheat")
-//                || getTypeOfBread().trim().equalsIgnoreCase("Rye") || getTypeOfBread().trim().equalsIgnoreCase("Wrap")) {
-//            if (getSize() == 4) {
-//                price = priceOf4;
-//            } else if (getSize() == 8) {
-//                price = priceOf8;
-//            }
-//        }
-//
-//        for (Topping topping : getToppings()) {
-//            price += topping.getPrice();
-//        }
-//
-//        return price;
-//    }
+    public static void blt(){
+        System.out.println("""
+                                
+                                🥪 BLT
+                                
+                                o 8" white bread
+                                o Bacon
+                                o Cheddar
+                                o Lettuce
+                                o Tomato
+                                o Ranch
+                                o Toasted
+                                """);
+    }
+
+    public static void philly(){
+        System.out.println("""
+                                
+                                🧀🥩 Philly Cheese Steak
+                                
+                                o 8" white bread
+                                o Steak
+                                o American Cheese
+                                o Peppers
+                                o Mayo
+                                o Toasted
+                                """) ;
+    }
 }

@@ -1,9 +1,0 @@
-
-Size:                         4
-Bread:                        White
-Premium Topping:              Provolone
-Sauce                         Vinaigrette
-Toasted                       Yes
-Size:                         4
-Flavor:                       Lemonade
-Total price:                   8.55 

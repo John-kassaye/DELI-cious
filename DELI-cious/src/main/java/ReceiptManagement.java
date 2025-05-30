@@ -25,6 +25,7 @@ public class ReceiptManagement {
                 double orderPrice = 0;
                 for (Menu menu : order.getMenus()){
                     fileWriter.write("\n" + menu.getName());
+                    fileWriter.write("\n" + menu.toString());
                     orderPrice += menu.getPrice();
                 }
                 fileWriter.write(String.format("\n%-30s $%.2f ","Total price: " , orderPrice));

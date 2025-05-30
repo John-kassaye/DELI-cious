@@ -59,10 +59,10 @@ public class UserInterface {
                     System.out.println("1️⃣- Blt\n2️⃣- Philly Cheese Steak");
                     String custom = scanner.nextLine();
                     if (custom.trim().equals("1")) {
-                        blt();
+                        CustomSandwich.blt();
                         customSandwich = signatureSandwich("BLT");
                     } else if (custom.trim().equals("2")) {
-                        philly();
+                        CustomSandwich.philly();
                         customSandwich2 = signatureSandwich("PHILLY");
                     }
                 }
@@ -521,53 +521,6 @@ public class UserInterface {
         return menuList;
     }
 
-//    public static void meatTopping() {
-//
-//        String topping = """
-//
-//                🥩 Meats:
-//
-//                1️⃣ - steak
-//                2️⃣ - ham
-//                3️⃣ - salami
-//                4️⃣ - roast beef
-//                5️⃣ - chicken
-//                6️⃣ - bacon
-//                """;
-//        System.out.println(topping);
-//    }
-
-//    public static void cheeseTopping(){
-//        String cheese = """
-//
-//                🧀 Cheeses:
-//
-//                7️⃣ - american
-//                8️⃣ - provolone
-//                9️⃣ - cheddar
-//                🔟 - swiss
-//                """;
-//        System.out.println(cheese);
-//    }
-
-//    public static void regularTopping(){
-//        String regular = """
-//
-//                🥬 Regular Toppings:
-//
-//                1️⃣ - lettuce
-//                2️⃣ - peppers
-//                3️⃣ - onions
-//                4️⃣ - tomatoes
-//                5️⃣ - jalapeños
-//                6️⃣ - cucumbers
-//                7️⃣ - pickles
-//                8️⃣ - guacamole
-//                9️⃣ - mushrooms
-//                """;
-//        System.out.println(regular);
-//    }
-
     public static void saucesTopping(){
         String sauces = """
                 
@@ -590,34 +543,5 @@ public class UserInterface {
                 1 - Yes
                 2 - no
                 """);
-    }
-
-    public static void blt(){
-        System.out.println("""
-                                
-                                🥪 BLT
-                                
-                                o 8" white bread
-                                o Bacon
-                                o Cheddar
-                                o Lettuce
-                                o Tomato
-                                o Ranch
-                                o Toasted
-                                """);
-    }
-
-    public static void philly(){
-        System.out.println("""
-                                
-                                🧀🥩 Philly Cheese Steak
-                                
-                                o 8" white bread
-                                o Steak
-                                o American Cheese
-                                o Peppers
-                                o Mayo
-                                o Toasted
-                                """) ;
     }
 }
