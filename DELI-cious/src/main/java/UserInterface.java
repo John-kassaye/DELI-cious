@@ -164,8 +164,8 @@ public class UserInterface {
                             System.out.println("How many people?");
                             people = scanner.nextInt();
                             scanner.nextLine();
-                            totalPrice/= people;
-                            System.out.printf("\n$%.2f each Split between " + people + " people:", totalPrice);
+                            double splitPrice = totalPrice / people;
+                            System.out.printf("\n$%.2f each Split between " + people + " people", splitPrice);
                         }
 
                         System.out.println("\n1- Confirm ✅\n2- Delete ❌");
@@ -180,7 +180,7 @@ public class UserInterface {
                             System.out.println("🎉 Order confirmed. Thank you for your purchase!");
 
                             if (isCustomer){
-                                System.out.println("\uD83D\uDCE7 Receipt sent to your email");
+                                System.out.println("\uD83D\uDCE7 Your has been sent to your email");
                             }
                             input = false;
                         }

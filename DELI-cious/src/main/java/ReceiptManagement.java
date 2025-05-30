@@ -36,7 +36,7 @@ public class ReceiptManagement {
                 finalPrice/= people;
                 fileWriter.write(String.format("\n%-30s  $%.2f each", "Split between " + people + " people:" , finalPrice));
             }
-            System.out.println("\n \uD83E\uDDFE Your receipt has been written to the file successfully.");
+            System.out.println("\n\uD83E\uDDFE Your receipt has been written to the file successfully.");
 
         } catch (Exception e) {
             throw new RuntimeException(e);
